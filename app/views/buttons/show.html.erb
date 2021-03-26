@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @button.name %>
+</p>
+
+<p>
+  <strong>Coordinates:</strong>
+  <%= @button.coordinates %>
+</p>
+
+<p>
+  <strong>Device:</strong>
+  <%= @button.device %>
+</p>
+
+<%= link_to 'Edit', edit_button_path(@button) %> |
+<%= link_to 'Back', buttons_path %>

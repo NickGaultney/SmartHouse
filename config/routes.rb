@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  resources :buttons
+  resources :devices
   root 'welcome#welcome'
 
   get 'garage', to: 'rooms#garage'
