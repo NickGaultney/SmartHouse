@@ -10,6 +10,7 @@ class ButtonsController < ApplicationController
   # GET /buttons/1
   # GET /buttons/1.json
   def show
+    head :no_content
   end
 
   # GET /buttons/new
