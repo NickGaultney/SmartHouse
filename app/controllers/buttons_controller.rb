@@ -1,3 +1,5 @@
+require 'net/http'
+
 class ButtonsController < ApplicationController
   before_action :set_button, only: [:show, :edit, :update, :destroy]
 
@@ -10,6 +12,7 @@ class ButtonsController < ApplicationController
   # GET /buttons/1
   # GET /buttons/1.json
   def show
+    toggle_switch(Device.find(@button.device_id))
     head :no_content
   end
 
@@ -71,5 +74,10 @@ class ButtonsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def button_params
       params.require(:button).permit(:name, :coordinates, :device)
+    end
+
+    def toggle_switch(device)
+      uri = URI("http://#{device.ip_address}/?relay=toggle")
+      Net::HTTP.get(uri)
     end
 end
