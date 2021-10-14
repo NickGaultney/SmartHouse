@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_26_222357) do
+ActiveRecord::Schema.define(version: 2021_10_14_221024) do
 
   create_table "buttons", force: :cascade do |t|
     t.string "name"
-    t.string "coordinates"
+    t.string "coordinates", default: "1%,1%"
     t.integer "device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
