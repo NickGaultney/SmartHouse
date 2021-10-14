@@ -1,3 +1,9 @@
+.my-header {
+  width: 99.1vw;
+  height: 60px;
+  background: gray;
+}
+
 .my-container {
   display: flex;
   justify-content: center;
@@ -21,8 +27,8 @@
 
 .bulb {
   position: absolute;
-  width: 24px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   overflow: hidden;
   cursor: pointer;
