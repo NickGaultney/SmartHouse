@@ -48,6 +48,7 @@ class ButtonsController < ApplicationController
       if @button.update(button_params)
         format.html { redirect_to @button, notice: 'Button was successfully updated.' }
         format.json { render :show, status: :ok, location: @button }
+        format.js { render nothing: true }
       else
         format.html { render :edit }
         format.json { render json: @button.errors, status: :unprocessable_entity }
@@ -77,7 +78,8 @@ class ButtonsController < ApplicationController
     end
 
     def toggle_switch(device)
-      uri = URI("http://#{device.ip_address}/?relay=toggle")
+      #uri = URI("http://#{device.ip_address}:3000/?relay=toggle")
+      uri = URI("http://gaultneycloud.ga:3000/?relay=toggle")
       Net::HTTP.get(uri)
     end
 end
