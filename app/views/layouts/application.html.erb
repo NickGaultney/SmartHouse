@@ -15,10 +15,8 @@
   </head>
 
   <body>
-    <div id="flash">
-      <% flash.each do |key, value| %>
-      <div class="flash alert <%= alert_class(key) %>"><%= value %></div> 
-      <% end %>
+    <div class="my-header">
+      <%= render '/layouts/header' %>
     </div>
     
     <%= yield %>

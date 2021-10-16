@@ -9,6 +9,9 @@ class ButtonsController < ApplicationController
     @buttons = Button.all
   end
 
+  def edit_mode
+  end
+
   # GET /buttons/1
   # GET /buttons/1.json
   def show
@@ -78,8 +81,7 @@ class ButtonsController < ApplicationController
     end
 
     def toggle_switch(device)
-      #uri = URI("http://#{device.ip_address}:3000/?relay=toggle")
-      uri = URI("http://gaultneycloud.ga:3000/?relay=toggle")
-      Net::HTTP.get(uri)
+      #uri = URI("http://#{device.ip_address}/?relay=toggle")
+      #Net::HTTP.get(uri)
     end
 end
