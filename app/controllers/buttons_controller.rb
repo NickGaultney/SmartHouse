@@ -77,9 +77,21 @@ class ButtonsController < ApplicationController
     end
 
     def toggle_switch(device)
+      client = mqtt_connect(device.ip_address)
+      unless client.nil?
+        client.publish("cmnd/#{device.topic}/Power", "toggle", false, 1)
+        client.disconnect
+      end
+    end
+
+    def mqtt_connect(ip_address)
       client = PahoMqtt::Client.new
-      client.connect(device.ip_address, 1883)
-      client.publish("cmnd/#{device.topic}/Power", "toggle", false, 1)
-      client.disconnect
+      begin 
+        client.connect(ip_address, 1883)
+      rescue PahoMqtt::Exception
+        return nil
+      end
+
+      return client
     end
 end
