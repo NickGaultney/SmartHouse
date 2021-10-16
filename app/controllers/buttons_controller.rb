@@ -9,9 +9,6 @@ class ButtonsController < ApplicationController
     @buttons = Button.all
   end
 
-  def edit_mode
-  end
-
   # GET /buttons/1
   # GET /buttons/1.json
   def show
@@ -51,7 +48,6 @@ class ButtonsController < ApplicationController
       if @button.update(button_params)
         format.html { redirect_to @button, notice: 'Button was successfully updated.' }
         format.json { render :show, status: :ok, location: @button }
-        format.js { render nothing: true }
       else
         format.html { render :edit }
         format.json { render json: @button.errors, status: :unprocessable_entity }
@@ -81,7 +77,21 @@ class ButtonsController < ApplicationController
     end
 
     def toggle_switch(device)
-      #uri = URI("http://#{device.ip_address}/?relay=toggle")
-      #Net::HTTP.get(uri)
+      client = mqtt_connect(device.ip_address)
+      unless client.nil?
+        client.publish("cmnd/#{device.topic}/Power", "toggle", false, 1)
+        client.disconnect
+      end
+    end
+
+    def mqtt_connect(ip_address)
+      client = PahoMqtt::Client.new
+      begin 
+        client.connect('192.168.1.96', 1883)
+      rescue PahoMqtt::Exception
+        return nil
+      end
+
+      return client
     end
 end
