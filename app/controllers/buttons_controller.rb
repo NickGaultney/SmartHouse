@@ -79,7 +79,7 @@ class ButtonsController < ApplicationController
     def toggle_switch(device)
       client = mqtt_connect(device.ip_address)
       unless client.nil?
-        client.publish("cmnd/#{device.topic}/Power", "toggle", false, 1)
+        client.publish("cmnd/#{device.mqtt_topic}/Power", "toggle", false, 1)
         client.disconnect
       end
     end
