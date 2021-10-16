@@ -87,7 +87,7 @@ class ButtonsController < ApplicationController
     def mqtt_connect(ip_address)
       client = PahoMqtt::Client.new
       begin 
-        client.connect(ip_address, 1883)
+        client.connect('192.168.1.96', 1883)
       rescue PahoMqtt::Exception
         return nil
       end
