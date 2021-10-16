@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'paho-mqtt'
+
 gem 'jquery-rails'
 gem 'jQuery-rwdImageMaps-rails'
 gem 'rails_admin', '~> 2.0'
