@@ -51,11 +51,11 @@ class ButtonsController < ApplicationController
   def update
     respond_to do |format|
       if @button.update(button_params)
-        format.html { redirect_to @button, notice: 'Button was successfully updated.' }
-        format.json { render :show, status: :ok, location: @button }
+        #format.html { redirect_to @button, notice: 'Button was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @button }
       else
-        format.html { render :edit }
-        format.json { render json: @button.errors, status: :unprocessable_entity }
+        #format.html { render :edit }
+        #format.json { render json: @button.errors, status: :unprocessable_entity }
       end
     end
   end

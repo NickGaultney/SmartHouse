@@ -57,7 +57,7 @@ function toggleEditMode() {
 		enableDraggable(".bulb");
 	} else {
 		button.setAttribute("state", "false");
-		disableDraggable(".bulb");
+		disableDraggable(".bulb"); 
 	}
 }
 
@@ -66,7 +66,7 @@ function enableDraggable(e) {
 		containment: '.outfit',
 	    revert: 'invalid',
 	    drag: function(event, ui) {
-	    }
+	    },
 	});
 
 	$(e).draggable('enable');

@@ -38,5 +38,6 @@
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, .5);
     transform: scale3d(1.2, 1.2, 1.2);
     background: rgba(white, .7);
+    pointer-events: none;
   }
 }
