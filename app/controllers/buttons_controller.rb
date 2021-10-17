@@ -1,7 +1,7 @@
 require 'net/http'
 
 class ButtonsController < ApplicationController
-  before_action :set_button, only: [:show, :edit, :update, :destroy]
+  before_action :set_button, only: [:show, :edit, :update, :destroy, :toggle]
 
   # GET /buttons
   # GET /buttons.json
@@ -13,7 +13,12 @@ class ButtonsController < ApplicationController
   # GET /buttons/1.json
   def show
     toggle_switch(Device.find(@button.device_id))
-    head :no_content
+    redirect_to buttons_path
+  end
+
+  def toggle
+    toggle_switch(Device.find(@button.device_id))
+    redirect_to :back
   end
 
   # GET /buttons/new
@@ -77,21 +82,28 @@ class ButtonsController < ApplicationController
     end
 
     def toggle_switch(device)
-      client = mqtt_connect(device.ip_address)
-      unless client.nil?
+      client = PahoMqtt::Client.new({host: "192.168.1.96", port: 1883, ssl: false, username: 'homeiot', password: '12345678'})
+      
+      ### Register a callback for puback event when receiving a puback
+      waiting_puback = true
+      client.on_puback do
+        waiting_puback = false
+        puts "Message Acknowledged"
+      end
+
+      begin 
+        client.connect("192.168.1.96", 1883)
+      rescue PahoMqtt::Exception
+        #Rails.logger.info "Failed to connect to #{device.ip_address}: is #{device.name} online?"
+      else
+        #Rails.logger.info "Successfully connected to #{device.ip_address}"
         client.publish("cmnd/#{device.mqtt_topic}/Power", "toggle", false, 1)
+
+        while waiting_puback do
+          sleep 0.001
+        end
+
         client.disconnect
       end
-    end
-
-    def mqtt_connect(ip_address)
-      client = PahoMqtt::Client.new
-      begin 
-        client.connect('192.168.1.96', 1883)
-      rescue PahoMqtt::Exception
-        return nil
-      end
-
-      return client
     end
 end
