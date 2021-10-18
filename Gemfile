@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 gem 'paho-mqtt'
+gem 'http_scanner'
 
 gem 'jquery-rails'
 gem 'jQuery-rwdImageMaps-rails'

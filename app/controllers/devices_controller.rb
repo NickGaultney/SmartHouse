@@ -61,6 +61,13 @@ class DevicesController < ApplicationController
     end
   end
 
+  def scan
+    scanner = HttpScanner.new
+    tasmota_addresses = scanner.scan('tasmota')
+
+    @ip_addresses = tasmota_addresses - getAllIP
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_device
@@ -70,5 +77,16 @@ class DevicesController < ApplicationController
     # Only allow a list of trusted parameters through.
     def device_params
       params.require(:device).permit(:name, :ip_address)
+    end
+
+    def getAllIP
+      all_ip_addresses = []
+      devices = Device.all
+
+      devices.each do |device|
+        all_ip_addresses << device.ip_address
+      end
+
+      return all_ip_addresses
     end
 end

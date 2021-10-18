@@ -1,0 +1,17 @@
+<h1>Scan Network</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Ip address</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ip_addresses.each do |ip| %>
+      <tr>
+        <td><%= ip %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

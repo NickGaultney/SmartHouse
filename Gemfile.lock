@@ -86,6 +86,7 @@ GEM
     haml (5.2.1)
       temple (>= 0.8.0)
       tilt
+    http_scanner (0.2.1)
     i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
@@ -254,6 +255,7 @@ DEPENDENCIES
   capybara (>= 2.15)
   chromedriver-helper
   coffee-rails (~> 4.2)
+  http_scanner
   jQuery-rwdImageMaps-rails
   jbuilder (~> 2.5)
   jquery-rails
