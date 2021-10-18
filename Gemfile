@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'paho-mqtt'
 gem 'http_scanner'
+gem "http"
 
 gem 'jquery-rails'
 gem 'jQuery-rwdImageMaps-rails'
