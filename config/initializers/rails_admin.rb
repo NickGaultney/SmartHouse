@@ -38,4 +38,13 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model 'Device' do
+    edit do
+      field :name
+      field :ip_address do
+        partial "device_ip_address"
+      end
+    end
+  end
 end

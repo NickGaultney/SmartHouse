@@ -1,0 +1,20 @@
+
+<% 
+	scanner = HttpScanner.new
+    tasmota_addresses = scanner.scan('tasmota')
+	all_ip_addresses = []
+	devices = Device.all
+
+	devices.each do |device|
+		all_ip_addresses << device.ip_address
+	end
+
+	tasmota_addresses = tasmota_addresses - all_ip_addresses
+ %>
+
+<select class="form-select" aria-label="Default select example" name="device[ip_address]" id="device_ip_address">
+  <option selected>Open this select menu</option>
+  <% tasmota_addresses.each do |ip| %>
+	  <option value=<%= ip %>><%= ip %></option>
+  <% end %>
+</select>
