@@ -25,7 +25,7 @@ end
 %>
 
 <select class="form-select" aria-label="Default select example" name="device[ip_address]" id="device_ip_address">
-  <option selected>Open this select menu</option>
+  <option selected>Choose a Device</option>
   <% get_network_devices.each do |topic, ip| %>
 	  <option value=<%= ip %>><%= topic %></option>
   <% end %>
