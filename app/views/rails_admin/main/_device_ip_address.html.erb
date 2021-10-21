@@ -1,7 +1,8 @@
-
-<% 
+<%
+def get_network_devices
+	network_devices = {}
 	scanner = HttpScanner.new
-    tasmota_addresses = scanner.scan('tasmota')
+	tasmota_addresses = scanner.scan('tasmota')
 	all_ip_addresses = []
 	devices = Device.all
 
@@ -10,11 +11,22 @@
 	end
 
 	tasmota_addresses = tasmota_addresses - all_ip_addresses
- %>
+
+	tasmota_addresses.each do |ip|
+		network_devices[get_device_topic(ip)] = ip 
+	end
+
+	return network_devices
+end
+
+def get_device_topic(ip)
+	JSON.parse(HTTP.get("http://#{ip}/cm?cmnd=status+0").body.to_str)["Status"]["Topic"]
+end
+%>
 
 <select class="form-select" aria-label="Default select example" name="device[ip_address]" id="device_ip_address">
   <option selected>Open this select menu</option>
-  <% tasmota_addresses.each do |ip| %>
-	  <option value=<%= ip %>><%= ip %></option>
+  <% get_network_devices.each do |topic, ip| %>
+	  <option value=<%= ip %>><%= topic %></option>
   <% end %>
 </select>
