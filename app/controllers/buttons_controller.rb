@@ -49,15 +49,7 @@ class ButtonsController < ApplicationController
   # PATCH/PUT /buttons/1
   # PATCH/PUT /buttons/1.json
   def update
-    respond_to do |format|
-      if @button.update(button_params)
-        #format.html { redirect_to @button, notice: 'Button was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @button }
-      else
-        #format.html { render :edit }
-        #format.json { render json: @button.errors, status: :unprocessable_entity }
-      end
-    end
+    @button.update(button_params)
   end
 
   # DELETE /buttons/1
