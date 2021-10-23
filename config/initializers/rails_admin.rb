@@ -45,6 +45,7 @@ RailsAdmin.config do |config|
       field :ip_address do
         partial "device_ip_address"
       end
+      field :state
     end
   end
 end
