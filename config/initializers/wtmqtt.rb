@@ -14,13 +14,13 @@ Rails.configuration.after_initialize do
 			@client.on_message do |packet|
 			  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
 			  device = Device.find(get_id(packet.topic))
-			  device.update_attribute("state", !device.state)
+			  device.update_attribute("state", get_state(packet.payload))
 			end
 		end
 
 		def connect
 			begin 
-				@client.connect(@ip, @port)
+				@client.connect(@ip, @port, @client.keep_alive, true, @client.blocking)
 			rescue PahoMqtt::Exception
 			    #Rails.logger.info "Failed to connect to #{device.ip_address}: is #{device.name} online?"
 			end
@@ -59,15 +59,15 @@ Rails.configuration.after_initialize do
 			def get_id(topic)
 				topic.split("/")[1].split("_")[0]
 			end
+
+			def get_state(payload)
+				payload == "OFF" ? false : true
+			end
 	end
 
 	Thread.new do 
 		client = WTMQTT.new(ip: "192.168.1.96", port: 1883, user: "homeiot", password: "12345678")
 		client.connect
 		client.subscribe("stat/+/POWER")
-
-		while true
-			sleep 60
-		end
 	end
 end
