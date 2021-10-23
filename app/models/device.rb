@@ -12,4 +12,13 @@ class Device < ApplicationRecord
 
 		HTTP.get("http://#{ip_address}/cm?cmnd=backlog%20mqtthost%20#{mqtt_host}%3Bmqttuser%20#{mqtt_user}%3Bmqttpassword%20#{mqtt_password}%3Btopic%20#{topic}%3Btemplate%20#{template}%3Bmodule%200%3B")
 	end
+
+	after_update :broadcast
+	def broadcast
+		ActionCable.server.broadcast(
+			'buttons',
+			state: self.state,
+			id: self.id
+	    )
+	end
 end
