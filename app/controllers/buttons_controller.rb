@@ -13,7 +13,7 @@ class ButtonsController < ApplicationController
   # GET /buttons/1.json
   def show
     toggle_switch(Device.find(@button.device_id))
-    redirect_to buttons_path
+    redirect_to root_path
   end
 
   def toggle
