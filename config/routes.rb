@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  mount ActionCable.server, at: '/cable'
   root 'buttons#index'
 
   get '/buttons/edit_mode', to: 'buttons#edit_mode'
