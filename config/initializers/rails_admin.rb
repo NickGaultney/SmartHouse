@@ -48,4 +48,14 @@ RailsAdmin.config do |config|
       field :state
     end
   end
+
+  config.model 'SlaveSwitch' do
+    edit do
+      field :name
+      field :ip_address do
+        partial "slave_switch_ip_address"
+      end
+      field :device
+    end
+  end
 end

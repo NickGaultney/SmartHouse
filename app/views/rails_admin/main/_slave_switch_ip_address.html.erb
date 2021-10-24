@@ -1,0 +1,37 @@
+<%
+def get_network_devices
+	network_devices = {}
+	scanner = HttpScanner.new
+	tasmota_addresses = scanner.scan('tasmota')
+	all_ip_addresses = []
+	devices = Device.all
+	slaves = SlaveSwitch.all
+
+	devices.each do |device|
+		all_ip_addresses << device.ip_address
+	end
+
+	slaves.each do |slave|
+		all_ip_addresses << slave.ip_address
+	end
+
+	tasmota_addresses = tasmota_addresses - all_ip_addresses
+
+	tasmota_addresses.each do |ip|
+		network_devices[get_device_topic(ip)] = ip 
+	end
+
+	return network_devices
+end
+
+def get_device_topic(ip)
+	JSON.parse(HTTP.get("http://#{ip}/cm?cmnd=status+0").body.to_str)["Status"]["Topic"]
+end
+%>
+
+<select class="form-select" aria-label="Default select example" name="slave_switch[ip_address]" id="slave_switch_ip_address">
+  <option selected>Choose a Device</option>
+  <% get_network_devices.each do |topic, ip| %>
+	  <option value=<%= ip %>><%= topic %></option>
+  <% end %>
+</select>

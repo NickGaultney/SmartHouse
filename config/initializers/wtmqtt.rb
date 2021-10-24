@@ -13,8 +13,18 @@ Rails.configuration.after_initialize do
 		def on_message
 			@client.on_message do |packet|
 			  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
-			  device = Device.find(get_id(packet.topic))
-			  device.update_attribute("state", get_state(packet.payload))
+			  id, type = parse_topic(packet.topic)
+			  device = nil
+
+			  if type == "Device"
+			  	  device = Device.find(id)
+				  device.update(state: get_state(packet.payload))
+			  elsif type == "SlaveSwitch"
+			  	  device = Device.find(SlaveSwitch.find(id).device_id)
+				  toggle_light(device.topic)
+			  end
+
+			  HTTP.get("http://localhost:3000/bump?id=#{device.id}")
 			end
 		end
 
@@ -36,7 +46,8 @@ Rails.configuration.after_initialize do
 		end
 
 		def toggle_light(topic)
-
+			#Rails.logger.info "Successfully connected to #{device.ip_address}"
+        	@client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
 		end
 
 		private
@@ -56,16 +67,13 @@ Rails.configuration.after_initialize do
 				end
 			end
 
-			def get_id(topic)
-				topic.split("/")[1].split("_")[0]
+			def parse_topic(topic)
+				split = topic.split("/")[1].split("_")
+				return [split[1], split[0]]
 			end
 
 			def get_state(payload)
 				payload == "OFF" ? false : true
 			end
 	end
-	
-	client = WTMQTT.new(ip: "192.168.1.96", port: 1883, user: "homeiot", password: "12345678")
-	client.connect
-	client.subscribe("stat/+/POWER")
 end
