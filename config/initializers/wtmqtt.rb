@@ -14,13 +14,14 @@ Rails.configuration.after_initialize do
 			@client.on_message do |packet|
 			  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
 			  id, type = parse_topic(packet.topic)
+			  device = nil
 
 			  if type == "Device"
 			  	  device = Device.find(id)
 				  device.update(state: get_state(packet.payload))
 			  elsif type == "SlaveSwitch"
 			  	  device = Device.find(SlaveSwitch.find(id).device_id)
-				  device.update(state: get_state(packet.payload))
+				  toggle_light(device.topic)
 			  end
 
 			  HTTP.get("http://localhost:3000/bump?id=#{device.id}")
@@ -45,7 +46,8 @@ Rails.configuration.after_initialize do
 		end
 
 		def toggle_light(topic)
-
+			#Rails.logger.info "Successfully connected to #{device.ip_address}"
+        	@client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
 		end
 
 		private
@@ -67,7 +69,7 @@ Rails.configuration.after_initialize do
 
 			def parse_topic(topic)
 				split = topic.split("/")[1].split("_")
-				[split[1], split[0]]
+				return [split[1], split[0]]
 			end
 
 			def get_state(payload)
