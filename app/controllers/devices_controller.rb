@@ -1,5 +1,5 @@
 class DevicesController < ApplicationController
-  before_action :set_device, only: [:show, :edit, :update, :destroy]
+  before_action :set_device, only: [:show, :edit, :update, :destroy, :bump]
 
   # GET /devices
   # GET /devices.json
@@ -10,6 +10,16 @@ class DevicesController < ApplicationController
   # GET /devices/1
   # GET /devices/1.json
   def show
+  end
+
+  def bump
+    ActionCable.server.broadcast(
+      'buttons',
+      state: @device.state,
+      id: @device.id
+    )
+
+    head :ok
   end
 
   # GET /devices/new
@@ -40,15 +50,8 @@ class DevicesController < ApplicationController
   # PATCH/PUT /devices/1
   # PATCH/PUT /devices/1.json
   def update
-    respond_to do |format|
-      if @device.update(device_params)
-        format.html { redirect_to @device, notice: 'Device was successfully updated.' }
-        format.json { render :show, status: :ok, location: @device }
-      else
-        format.html { render :edit }
-        format.json { render json: @device.errors, status: :unprocessable_entity }
-      end
-    end
+    @device.update(device_params)
+    head :ok
   end
 
   # DELETE /devices/1

@@ -1,0 +1,297 @@
+rake aborted!
+Interrupt: 
+/home/squirrel/SmartHouse/lib/tasks/wtmqtt.rake:8:in `sleep'
+/home/squirrel/SmartHouse/lib/tasks/wtmqtt.rake:8:in `block (2 levels) in <main>'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+Subscribed
+rake aborted!
+OptionParser::AmbiguousOption: ambiguous option: -d
+
+
+Caused by:
+OptionParser::InvalidOption: invalid option: d
+Did you mean?  D
+
+(See full trace by running task with --trace)
+Subscribed
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>ON
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>ON
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>ON
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>ON
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>ON
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/3_Hall/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>ON
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON

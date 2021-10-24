@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/buttons/edit_mode', to: 'buttons#edit_mode'
   get '/buttons/:id/toggle', to: 'buttons#toggle'
   get '/scan', to: 'devices#scan'
+  get '/bump', to: 'devices#bump'
 
   resources :buttons
   resources :devices

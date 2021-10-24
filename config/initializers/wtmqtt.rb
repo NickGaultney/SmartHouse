@@ -14,7 +14,9 @@ Rails.configuration.after_initialize do
 			@client.on_message do |packet|
 			  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
 			  device = Device.find(get_id(packet.topic))
-			  device.update_attribute("state", get_state(packet.payload))
+			  device.update(state: get_state(packet.payload))
+
+			  HTTP.get("http://localhost:3000/bump?id=#{device.id}")
 			end
 		end
 
@@ -64,8 +66,4 @@ Rails.configuration.after_initialize do
 				payload == "OFF" ? false : true
 			end
 	end
-	
-	client = WTMQTT.new(ip: "192.168.1.96", port: 1883, user: "homeiot", password: "12345678")
-	client.connect
-	client.subscribe("stat/+/POWER")
 end
