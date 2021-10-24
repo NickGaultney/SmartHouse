@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :slave_switches
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   mount ActionCable.server, at: '/cable'
   root 'buttons#index'

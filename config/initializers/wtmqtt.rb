@@ -13,8 +13,15 @@ Rails.configuration.after_initialize do
 		def on_message
 			@client.on_message do |packet|
 			  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
-			  device = Device.find(get_id(packet.topic))
-			  device.update(state: get_state(packet.payload))
+			  id, type = parse_topic(packet.topic)
+
+			  if type == "Device"
+			  	  device = Device.find(id)
+				  device.update(state: get_state(packet.payload))
+			  elsif type == "SlaveSwitch"
+			  	  device = Device.find(SlaveSwitch.find(id).device_id)
+				  device.update(state: get_state(packet.payload))
+			  end
 
 			  HTTP.get("http://localhost:3000/bump?id=#{device.id}")
 			end
@@ -58,8 +65,9 @@ Rails.configuration.after_initialize do
 				end
 			end
 
-			def get_id(topic)
-				topic.split("/")[1].split("_")[0]
+			def parse_topic(topic)
+				split = topic.split("/")[1].split("_")
+				[split[1], split[0]]
 			end
 
 			def get_state(payload)

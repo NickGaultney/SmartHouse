@@ -89,7 +89,7 @@ class ButtonsController < ApplicationController
         #Rails.logger.info "Failed to connect to #{device.ip_address}: is #{device.name} online?"
       else
         #Rails.logger.info "Successfully connected to #{device.ip_address}"
-        client.publish("cmnd/#{device.id.to_s + "_" + device.name.to_s.gsub(/[\s]/, "_")}/Power", "toggle", false, 1)
+        client.publish("cmnd/#{device.topic}/Power", "toggle", false, 1)
 
         while waiting_puback do
           sleep 0.001

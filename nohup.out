@@ -294,4 +294,162 @@ New message received on topic: stat/8_Family_Room/POWER
 New message received on topic: stat/4_Garage/POWER
 >>>ON
 New message received on topic: stat/8_Family_Room/POWER
+>>>ON#<Thread:0x00005650cd860780 /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:130 run> terminated with exception (report_on_exception is true):
+/home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/timeout/null.rb:21:in `initialize': failed to connect: Connection refused - connect(2) for "localhost" port 3000 (HTTP::ConnectionError)
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/timeout/null.rb:21:in `open'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/timeout/null.rb:21:in `connect'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/connection.rb:42:in `initialize'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/client.rb:72:in `new'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/client.rb:72:in `perform'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/client.rb:31:in `request'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/chainable.rb:75:in `request'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/chainable.rb:20:in `get'
+	from /home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:19:in `block in on_message'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+/home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/timeout/null.rb:21:in `initialize': Connection refused - connect(2) for "localhost" port 3000 (Errno::ECONNREFUSED)
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/timeout/null.rb:21:in `open'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/timeout/null.rb:21:in `connect'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/connection.rb:42:in `initialize'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/client.rb:72:in `new'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/client.rb:72:in `perform'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/client.rb:31:in `request'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/chainable.rb:75:in `request'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/http-5.0.1/lib/http/chainable.rb:20:in `get'
+	from /home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:19:in `block in on_message'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+rake aborted!
+HTTP::ConnectionError: failed to connect: Connection refused - connect(2) for "localhost" port 3000
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:19:in `block in on_message'
+
+Caused by:
+Errno::ECONNREFUSED: Connection refused - connect(2) for "localhost" port 3000
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:19:in `block in on_message'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
+>>>ON
+New message received on topic: stat/4_Garage/POWER
+>>>OFF
+New message received on topic: stat/7_Front_Porch/POWER
+>>>ON
+New message received on topic: stat/7_Front_Porch/POWER
+>>>OFF
+New message received on topic: stat/8_Family_Room/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+New message received on topic: stat/3_Hall/POWER
+>>>ON
+New message received on topic: stat/3_Hall/POWER
+>>>OFF
+New message received on topic: stat/4_Garage/POWER
 >>>ON

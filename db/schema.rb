@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_22_234954) do
+ActiveRecord::Schema.define(version: 2021_10_24_021138) do
 
   create_table "buttons", force: :cascade do |t|
     t.string "name"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 2021_10_22_234954) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "state"
+    t.string "topic"
+  end
+
+  create_table "slave_switches", force: :cascade do |t|
+    t.string "name"
+    t.integer "device_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "ip_address"
+    t.string "topic"
+    t.index ["device_id"], name: "index_slave_switches_on_device_id"
   end
 
 end
