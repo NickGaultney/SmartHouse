@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_24_021138) do
+ActiveRecord::Schema.define(version: 2021_10_25_230903) do
 
   create_table "buttons", force: :cascade do |t|
     t.string "name"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 2021_10_24_021138) do
     t.datetime "updated_at", null: false
     t.boolean "state"
     t.string "topic"
+  end
+
+  create_table "inputs", force: :cascade do |t|
+    t.string "name"
+    t.string "ip_address"
+    t.string "topic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "slave_switches", force: :cascade do |t|

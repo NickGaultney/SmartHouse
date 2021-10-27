@@ -58,4 +58,13 @@ RailsAdmin.config do |config|
       field :device
     end
   end
+  
+  config.model 'Input' do
+    edit do
+      field :name
+      field :ip_address do
+        partial "input_device_ip_address"
+      end
+    end
+  end
 end
