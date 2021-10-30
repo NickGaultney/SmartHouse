@@ -41,15 +41,7 @@ Rails.configuration.after_initialize do
 			  id, type = parse_topic(packet.topic)
 			  device = nil
 
-			  if type == "Switch"
-			  	  device = Switch.find(id)
-				  device.update(state: get_state(packet.payload))
-			  elsif type == "SlaveSwitch"
-			  	  device = Switch.find(SlaveSwitch.find(id).switch_id)
-				  toggle_light(device.topic)
-			  end
-
-			  HTTP.get("http://localhost:3000/bump?id=#{device.id}")
+			  self.send(type.downcase + "_action", id, packet.payload)
 			end
 		end
 
@@ -72,6 +64,24 @@ Rails.configuration.after_initialize do
 
 		def toggle_light(topic)
 			@client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
+		end
+
+		def switch_action(id, payload)
+			device = Switch.find(id)
+			device.update(state: get_state(payload))
+
+			HTTP.get("http://localhost:3000/bump?id=#{device.id}")
+		end
+
+		def slaveswitch_action(id, payload)
+			device = Switch.find(SlaveSwitch.find(id).switch_id)
+		    toggle_light(device.topic)
+
+		    HTTP.get("http://localhost:3000/bump?id=#{device.id}")
+		end
+
+		def input_action(id, payload)
+
 		end
 
 		private
