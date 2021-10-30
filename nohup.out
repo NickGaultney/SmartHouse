@@ -520,3 +520,40 @@ Tasks: TOP => wtmqtt:subscribe
 Subscribed
 New message received on topic: stat/Switch_1_Garage/POWER
 >>>OFF
+#<Thread:0x000055f753079c98 /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:130 run> terminated with exception (report_on_exception is true):
+/home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activemodel-5.2.4.4/lib/active_model/attribute_methods.rb:430:in `method_missing': undefined method `device_id' for #<SlaveSwitch:0x000055f752002b30> (NoMethodError)
+	from /home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:48:in `block in on_message'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+rake aborted!
+NoMethodError: undefined method `device_id' for #<SlaveSwitch:0x000055f752002b30>
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:48:in `block in on_message'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+Subscribed
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+#<Thread:0x000055a9875f6a28 /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:130 run> terminated with exception (report_on_exception is true):
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:49:in `block in on_message': undefined method `toggle_light' for #<WTMQTT:0x000055a9876064c8> (NoMethodError)
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+rake aborted!
+NoMethodError: undefined method `toggle_light' for #<WTMQTT:0x000055a9876064c8>
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:49:in `block in on_message'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+Subscribed
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON

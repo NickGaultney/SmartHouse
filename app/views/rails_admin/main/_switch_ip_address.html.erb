@@ -4,14 +4,9 @@ def get_network_devices
 	scanner = HttpScanner.new
 	tasmota_addresses = scanner.scan('tasmota')
 	all_ip_addresses = []
-	devices = Device.all
 	slaves = SlaveSwitch.all
 	inputs = Input.all
 	switches = Switch.all
-
-	devices.each do |device|
-		all_ip_addresses << device.ip_address
-	end
 
 	slaves.each do |slave|
 		all_ip_addresses << slave.ip_address
@@ -42,6 +37,6 @@ end
 <select class="form-select" aria-label="Default select example" name="switch[ip_address]" id="switch_ip_address">
   <option selected>Choose a Device</option>
   <% get_network_devices.each do |topic, ip| %>
-	  <option value=<%= ip %>><%= topic.split("_")[2] %></option>
+	  <option value=<%= ip %>><%= topic %></option>
   <% end %>
 </select>

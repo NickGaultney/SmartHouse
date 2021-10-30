@@ -65,7 +65,7 @@ RailsAdmin.config do |config|
       field :ip_address do
         partial "slave_switch_ip_address"
       end
-      field :device
+      field :switch
     end
   end
   

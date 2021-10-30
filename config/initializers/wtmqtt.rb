@@ -45,7 +45,7 @@ Rails.configuration.after_initialize do
 			  	  device = Switch.find(id)
 				  device.update(state: get_state(packet.payload))
 			  elsif type == "SlaveSwitch"
-			  	  device = Switch.find(SlaveSwitch.find(id).device_id)
+			  	  device = Switch.find(SlaveSwitch.find(id).switch_id)
 				  toggle_light(device.topic)
 			  end
 
@@ -70,6 +70,9 @@ Rails.configuration.after_initialize do
 	    	@client.subscribe([topic, 1])
 		end
 
+		def toggle_light(topic)
+			@client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
+		end
 
 		private
 			def confirm_subscription

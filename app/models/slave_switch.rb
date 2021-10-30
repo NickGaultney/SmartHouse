@@ -1,5 +1,5 @@
 class SlaveSwitch < ApplicationRecord
-  belongs_to :device
+  belongs_to :switch
 
   after_create :setup_device
   def setup_device
