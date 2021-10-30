@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ButtonTest < ActiveSupport::TestCase
+class SwitchesControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

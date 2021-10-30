@@ -10,26 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_25_230903) do
-
-  create_table "buttons", force: :cascade do |t|
-    t.string "name"
-    t.string "coordinates", default: "1%,1%"
-    t.integer "device_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "state"
-    t.index ["device_id"], name: "index_buttons_on_device_id"
-  end
-
-  create_table "devices", force: :cascade do |t|
-    t.string "name"
-    t.string "ip_address"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "state"
-    t.string "topic"
-  end
+ActiveRecord::Schema.define(version: 2021_10_30_023914) do
 
   create_table "inputs", force: :cascade do |t|
     t.string "name"
@@ -41,12 +22,22 @@ ActiveRecord::Schema.define(version: 2021_10_25_230903) do
 
   create_table "slave_switches", force: :cascade do |t|
     t.string "name"
-    t.integer "device_id"
+    t.integer "switch_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "ip_address"
     t.string "topic"
-    t.index ["device_id"], name: "index_slave_switches_on_device_id"
+    t.index ["switch_id"], name: "index_slave_switches_on_switch_id"
+  end
+
+  create_table "switches", force: :cascade do |t|
+    t.string "name"
+    t.string "topic"
+    t.string "ip_address"
+    t.boolean "state"
+    t.string "coordinates", default: "1%,1%"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

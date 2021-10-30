@@ -49,13 +49,23 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Switch' do
+    edit do
+      field :name
+      field :ip_address do
+        partial "switch_ip_address"
+      end
+      field :state
+    end
+  end
+
   config.model 'SlaveSwitch' do
     edit do
       field :name
       field :ip_address do
         partial "slave_switch_ip_address"
       end
-      field :device
+      field :switch
     end
   end
   

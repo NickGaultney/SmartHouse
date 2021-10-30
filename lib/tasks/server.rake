@@ -6,7 +6,7 @@ end
 
 desc 'Starts rails server'
 task :start do
-  Process.spawn("rake wtmqtt:subscribe")
+  Process.spawn("nohup rake wtmqtt:subscribe &")
   Process.exec("rails s -b 0.0.0.0 -d")
 end
 

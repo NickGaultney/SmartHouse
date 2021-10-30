@@ -4,13 +4,9 @@ def get_network_devices
 	scanner = HttpScanner.new
 	tasmota_addresses = scanner.scan('tasmota')
 	all_ip_addresses = []
-	devices = Device.all
 	slaves = SlaveSwitch.all
 	inputs = Input.all
-
-	devices.each do |device|
-		all_ip_addresses << device.ip_address
-	end
+	switches = Switch.all
 
 	slaves.each do |slave|
 		all_ip_addresses << slave.ip_address
@@ -18,6 +14,10 @@ def get_network_devices
 
 	inputs.each do |input|
 		all_ip_addresses << input.ip_address
+	end
+
+	switches.each do |switch|
+		all_ip_addresses << switch.ip_address
 	end
 
 	tasmota_addresses = tasmota_addresses - all_ip_addresses
