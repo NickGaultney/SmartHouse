@@ -1,5 +1,30 @@
 Rails.configuration.after_initialize do
 	class WTMQTT
+		def self.toggle_light(topic)
+        	client = PahoMqtt::Client.new({host: "192.168.1.96", port: 1883, ssl: false, username: 'homeiot', password: '12345678'})
+      
+			### Register a callback for puback event when receiving a puback
+			waiting_puback = true
+			client.on_puback do
+				waiting_puback = false
+			end
+
+			begin 
+				client.connect("192.168.1.96", 1883)
+			rescue PahoMqtt::Exception
+				#Rails.logger.info "Failed to connect to #{device.ip_address}: is #{device.name} online?"
+			else
+				#Rails.logger.info "Successfully connected to #{device.ip_address}"
+				client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
+
+				while waiting_puback do
+				  sleep 0.001
+				end
+
+				client.disconnect
+			end
+		end
+
 		def initialize(ip:, port:, user:, password:)
 			@client = PahoMqtt::Client.new({host: ip, port: port, ssl: false, username: user, password: password})
 			@ip = ip
@@ -16,11 +41,11 @@ Rails.configuration.after_initialize do
 			  id, type = parse_topic(packet.topic)
 			  device = nil
 
-			  if type == "Device"
-			  	  device = Device.find(id)
+			  if type == "Switch"
+			  	  device = Switch.find(id)
 				  device.update(state: get_state(packet.payload))
 			  elsif type == "SlaveSwitch"
-			  	  device = Device.find(SlaveSwitch.find(id).device_id)
+			  	  device = Switch.find(SlaveSwitch.find(id).device_id)
 				  toggle_light(device.topic)
 			  end
 
@@ -45,10 +70,6 @@ Rails.configuration.after_initialize do
 	    	@client.subscribe([topic, 1])
 		end
 
-		def toggle_light(topic)
-			#Rails.logger.info "Successfully connected to #{device.ip_address}"
-        	@client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
-		end
 
 		private
 			def confirm_subscription

@@ -10,7 +10,7 @@ App.Buttons = App.cable.subscriptions.create(
   'ButtonsChannel',
   {
     received: function(data) {
-      document.getElementById('device-' + data['id']).setAttribute("fill", getColor(data['state']));
+      document.getElementById('switch-' + data['id']).setAttribute("fill", getColor(data['state']));
     },
   },
 );

@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
-  def welcome
+  def home
+    @switches = Switch.all
   end
 end

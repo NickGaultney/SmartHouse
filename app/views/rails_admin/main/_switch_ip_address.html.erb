@@ -39,7 +39,7 @@ def get_device_topic(ip)
 end
 %>
 
-<select class="form-select" aria-label="Default select example" name="slave_switch[ip_address]" id="slave_switch_ip_address">
+<select class="form-select" aria-label="Default select example" name="switch[ip_address]" id="switch_ip_address">
   <option selected>Choose a Device</option>
   <% get_network_devices.each do |topic, ip| %>
 	  <option value=<%= ip %>><%= topic.split("_")[2] %></option>
