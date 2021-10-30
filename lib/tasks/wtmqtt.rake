@@ -4,7 +4,11 @@ namespace :wtmqtt do
 		client.connect
 		client.subscribe("stat/+/POWER")
 
-		while true
+		File.open("tmp/pids/mqtt.pid", "w") do |file|
+			file.write(Process.pid.to_s)
+		end
+
+		loop do
 			sleep 60
 		end
 	end
