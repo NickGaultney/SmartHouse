@@ -15,3 +15,9 @@ task :restart do
   Rake::Task[:stop].invoke
   Rake::Task[:start].invoke
 end
+
+desc "Restarts rails server"
+task :restart_mqtt do
+  File.new("tmp/pids/mqtt.pid").tap { |f| `kill -9 #{f.read.to_i}` }
+  Process.spawn("nohup rake wtmqtt:subscribe &")
+end
