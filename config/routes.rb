@@ -6,9 +6,6 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
   root 'welcome#home'
 
-  get '/buttons/edit_mode', to: 'buttons#edit_mode'
-  get '/buttons/:id/toggle', to: 'buttons#toggle'
-  get '/scan', to: 'devices#scan'
   get '/bump', to: 'switches#bump'
 
   resources :buttons
