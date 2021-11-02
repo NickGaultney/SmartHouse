@@ -12,7 +12,7 @@ class SwitchesController < ApplicationController
   	end
 
   	def show
-  		WTMQTT.toggle_light(@switch.topic)
+  		WTMQTT.new.connect.toggle_light(@switch.topic)
   		redirect_to root_path
   	end
 

@@ -593,3 +593,286 @@ Tasks: TOP => wtmqtt:subscribe
 Subscribed
 New message received on topic: stat/Switch_1_Garage/POWER
 >>>ON
+#<Thread:0x00005563b980a468 /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:130 run> terminated with exception (report_on_exception is true):
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:44:in `block in on_message': undefined method `8_action' for #<WTMQTT:0x00005563b9816bc8> (NoMethodError)
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+rake aborted!
+NoMethodError: undefined method `8_action' for #<WTMQTT:0x00005563b9816bc8>
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:44:in `block in on_message'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+Subscribed
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>OFF
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>OFF
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/SlaveSwitch_1_Lamp/POWER
+>>>ON
+Message Acknowledged
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/8_Family_Room/POWER
+>>>OFF
+#<Thread:0x000055ed8c18df88 /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:130 run> terminated with exception (report_on_exception is true):
+/home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/actioncable-5.2.4.4/lib/action_cable/server/broadcasting.rb:24:in `broadcast': wrong number of arguments (given 1, expected 2) (ArgumentError)
+	from /home/squirrel/SmartHouse/app/models/switch.rb:23:in `broadcast'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:426:in `block in make_lambda'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:236:in `block in halting_and_conditional'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:517:in `block in invoke_after'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:517:in `each'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:517:in `invoke_after'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:133:in `run_callbacks'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:816:in `_run_update_callbacks'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/callbacks.rb:350:in `_update_record'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/timestamp.rb:114:in `_update_record'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/persistence.rb:705:in `create_or_update'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/callbacks.rb:342:in `block in create_or_update'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:98:in `run_callbacks'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:816:in `_run_save_callbacks'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/callbacks.rb:342:in `create_or_update'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/persistence.rb:275:in `save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/validations.rb:46:in `save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:310:in `block (2 levels) in save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:387:in `block in with_transaction_returning_status'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/database_statements.rb:265:in `transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:212:in `transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:385:in `with_transaction_returning_status'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:310:in `block in save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:325:in `rollback_active_record_state!'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:309:in `save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/suppressor.rb:44:in `save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/persistence.rb:428:in `block in update'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:387:in `block in with_transaction_returning_status'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/database_statements.rb:267:in `block in transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/transaction.rb:239:in `block in within_new_transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/transaction.rb:236:in `synchronize'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/transaction.rb:236:in `within_new_transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/database_statements.rb:267:in `transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:212:in `transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:385:in `with_transaction_returning_status'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/persistence.rb:426:in `update'
+	from /home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:71:in `switch_action'
+	from /home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:44:in `block in on_message'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+rake aborted!
+ArgumentError: wrong number of arguments (given 1, expected 2)
+/home/squirrel/SmartHouse/app/models/switch.rb:23:in `broadcast'
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:71:in `switch_action'
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:44:in `block in on_message'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+Subscribed
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+#<Thread:0x0000562e7de51788 /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:130 run> terminated with exception (report_on_exception is true):
+/home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/actioncable-5.2.4.4/lib/action_cable/server/broadcasting.rb:24:in `broadcast': wrong number of arguments (given 1, expected 2) (ArgumentError)
+	from /home/squirrel/SmartHouse/app/models/switch.rb:23:in `broadcast'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:426:in `block in make_lambda'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:236:in `block in halting_and_conditional'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:517:in `block in invoke_after'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:517:in `each'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:517:in `invoke_after'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:133:in `run_callbacks'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:816:in `_run_update_callbacks'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/callbacks.rb:350:in `_update_record'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/timestamp.rb:114:in `_update_record'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/persistence.rb:705:in `create_or_update'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/callbacks.rb:342:in `block in create_or_update'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:98:in `run_callbacks'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activesupport-5.2.4.4/lib/active_support/callbacks.rb:816:in `_run_save_callbacks'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/callbacks.rb:342:in `create_or_update'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/persistence.rb:275:in `save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/validations.rb:46:in `save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:310:in `block (2 levels) in save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:387:in `block in with_transaction_returning_status'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/database_statements.rb:265:in `transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:212:in `transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:385:in `with_transaction_returning_status'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:310:in `block in save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:325:in `rollback_active_record_state!'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:309:in `save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/suppressor.rb:44:in `save'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/persistence.rb:428:in `block in update'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:387:in `block in with_transaction_returning_status'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/database_statements.rb:267:in `block in transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/transaction.rb:239:in `block in within_new_transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/transaction.rb:236:in `synchronize'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/transaction.rb:236:in `within_new_transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/connection_adapters/abstract/database_statements.rb:267:in `transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:212:in `transaction'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/transactions.rb:385:in `with_transaction_returning_status'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/persistence.rb:426:in `update'
+	from /home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:71:in `switch_action'
+	from /home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:44:in `block in on_message'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+rake aborted!
+ArgumentError: wrong number of arguments (given 1, expected 2)
+/home/squirrel/SmartHouse/app/models/switch.rb:23:in `broadcast'
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:71:in `switch_action'
+/home/squirrel/SmartHouse/config/initializers/wtmqtt.rb:44:in `block in on_message'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+Subscribed
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+#<Thread:0x0000558b0af8a8a0 /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:130 run> terminated with exception (report_on_exception is true):
+/home/squirrel/SmartHouse/lib/wtmqtt.rb:26:in `block in on_message': undefined method `id' for nil:NilClass (NoMethodError)
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+rake aborted!
+NoMethodError: undefined method `id' for nil:NilClass
+/home/squirrel/SmartHouse/lib/wtmqtt.rb:26:in `block in on_message'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+Subscribed
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
