@@ -876,3 +876,242 @@ Tasks: TOP => wtmqtt:subscribe
 Subscribed
 New message received on topic: stat/Switch_1_Garage/POWER
 >>>ON
+Subscribed
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>OFF
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>OFF
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>ON
+New message received on topic: stat/Switch_2_Lamp/POWER
+>>>OFF
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>ON
+New message received on topic: stat/Switch_1_Garage/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF
+New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>ON
