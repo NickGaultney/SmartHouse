@@ -2,21 +2,35 @@
   <!-- <div class="alert alert-warning" role="alert">This is a warning alert—check it out!</div> -->
 </div>
 
-<div class="my-container">
-  <div class="outfit">
-    <% @switches.each do |switch| %>
-      <%= link_to switch_path(switch), remote: true do %>
-        <div class="bulb switch-<%= switch.id %>" data-id=<%= switch.id %> coords=<%= switch.coordinates %> 
-          style="left:<%= switch.coordinates.split(',')[0] %>; top:<%= switch.coordinates.split(',')[1] %>;">
-          
-          <svg id="switch-<%= switch.id %>" xmlns="http://www.w3.org/2000/svg" height="32px" viewBox="0 0 24 24" width="32px" fill=<%= color_switch(switch) %>>
-            <title><%= switch.name %></title>
-            <path d="M0 0h24v24H0z" fill="none"/>
-            <path d="M9 21c0 .5.4 1 1 1h4c.6 0 1-.5 1-1v-1H9v1zm3-19C8.1 2 5 5.1 5 9c0 2.4 1.2 4.5 3 5.7V17c0 .5.4 1 1 1h6c.6 0 1-.5 1-1v-2.3c1.8-1.3 3-3.4 3-5.7 0-3.9-3.1-7-7-7z"/>
-          </svg>
+<div class="mobile-pagination">
+  <div id="0" class="swiper-button active">Lights</div>
+  <div id="1" class="swiper-button">Sensors</div>
+  <div id="2" class="swiper-button">Doors</div>
+  <div id="3" class="swiper-button">Motion Sensors</div>
+  <div id="4" class="swiper-button">Other 1</div>
+  <div id="5" class="swiper-button">Other 2</div>
+</div>
+
+<!-- Swiper -->
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    <div class="swiper-slide">
+      <div class="my-container">
+        <div class="outfit">
+          <section class="switches" id="switches">
+            <ul>
+              <%= render @switches %>
+            </ul>
+          </section>
+          <%= image_tag("Floor Plan-Model.png", class: "house-img") %>
         </div>
-      <% end %>
-    <% end %>
-    <%= image_tag("Floor Plan-Model.png", class: "house-img") %>
-  </div>  
+      </div>
+    </div>
+    <div class="swiper-slide">State Sensors</div>
+    <div class="swiper-slide">Doors</div>
+    <div class="swiper-slide">Motion Sensors</div>
+    <div class="swiper-slide">Other 1</div>
+    <div class="swiper-slide">Other 2</div>
+  </div>
+  <!-- Add Arrows -->
 </div>
