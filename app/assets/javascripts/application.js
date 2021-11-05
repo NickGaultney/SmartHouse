@@ -18,8 +18,6 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function() {
-	$('img[usemap]').rwdImageMaps();
-
 	$( ".outfit" ).droppable({
 		tolerance: "pointer",
 	    accept: ".bulb",
@@ -43,6 +41,21 @@ $(document).on('turbolinks:load', function() {
 			})
 	    }
 	});
+
+	swiper.on('slideChange', function () {
+	  document.getElementsByClassName("swiper-button active")[0].classList.remove("active");
+	  document.getElementById(swiper.activeIndex).classList.add("active");
+	});
+
+	$(".swiper-button").click(function(){
+		var button = this;
+		document.getElementsByClassName("swiper-button active")[0].classList.remove("active");
+		this.classList.add("active");
+		setTimeout(function () {
+	  		console.log(button.id);
+	    	swiper.slideTo(button.id);
+	  	}, 175);
+	})
 })
 
 function getEditButton() {
