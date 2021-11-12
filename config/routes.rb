@@ -1,3 +1,4 @@
+#commit test
 Rails.application.routes.draw do
   resources :inputs
   resources :switches
