@@ -55,7 +55,6 @@ RailsAdmin.config do |config|
       field :ip_address do
         partial "switch_ip_address"
       end
-      field :state
     end
   end
 
@@ -66,6 +65,9 @@ RailsAdmin.config do |config|
         partial "slave_switch_ip_address"
       end
       field :switch
+      field :switch_mode do
+        partial "switch_mode"
+      end
     end
   end
   
@@ -75,6 +77,16 @@ RailsAdmin.config do |config|
       field :ip_address do
         partial "input_device_ip_address"
       end
+    end
+  end
+
+  config.model 'Sensor' do
+    edit do
+      field :sensor_type do
+        partial "sensor_type"
+      end
+      field :gpio
+      field :input
     end
   end
 end

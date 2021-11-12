@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_30_023914) do
+ActiveRecord::Schema.define(version: 2021_11_12_225312) do
 
   create_table "inputs", force: :cascade do |t|
     t.string "name"
@@ -20,6 +20,16 @@ ActiveRecord::Schema.define(version: 2021_10_30_023914) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sensors", force: :cascade do |t|
+    t.string "sensor_type"
+    t.integer "gpio"
+    t.integer "input_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.boolean "state"
+    t.index ["input_id"], name: "index_sensors_on_input_id"
+  end
+
   create_table "slave_switches", force: :cascade do |t|
     t.string "name"
     t.integer "switch_id"
@@ -27,6 +37,7 @@ ActiveRecord::Schema.define(version: 2021_10_30_023914) do
     t.datetime "updated_at", null: false
     t.string "ip_address"
     t.string "topic"
+    t.string "switch_mode"
     t.index ["switch_id"], name: "index_slave_switches_on_switch_id"
   end
 
