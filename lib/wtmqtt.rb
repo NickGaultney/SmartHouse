@@ -9,7 +9,6 @@ class WTMQTT
 		on_message
 	end
 
-
 	def on_message
 		@client.on_message do |packet|
 		  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
@@ -55,10 +54,6 @@ class WTMQTT
 	    toggle_light(device.topic)
 
 	    HTTP.get("http://localhost:3000/bump?id=#{device.id}")
-	end
-
-	def input_action(id, payload)
-
 	end
 
 	private

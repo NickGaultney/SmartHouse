@@ -39,30 +39,36 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  config.model 'Device' do
+  config.model Switch do
     edit do
       field :name
       field :ip_address do
-        partial "device_ip_address"
-      end
-      field :state
-    end
-  end
+        def render
+          if bindings[:object].ip_address.present?
+            devices = {bindings[:object].topic => bindings[:object].ip_address}
+          else
+            devices = get_network_devices
+          end
 
-  config.model 'Switch' do
-    edit do
-      field :name
-      field :ip_address do
-        partial "switch_ip_address"
+          bindings[:view].render partial: 'switch_ip_address', :locals => {:field => self, :form => bindings[:form], network_devices: devices}
+        end
       end
     end
   end
 
-  config.model 'SlaveSwitch' do
+  config.model SlaveSwitch do
     edit do
       field :name
       field :ip_address do
-        partial "slave_switch_ip_address"
+        def render
+          if bindings[:object].ip_address.present?
+            devices = {bindings[:object].topic => bindings[:object].ip_address}
+          else
+            devices = get_network_devices
+          end
+
+          bindings[:view].render partial: 'slave_switch_ip_address', :locals => {:field => self, :form => bindings[:form], network_devices: devices}
+        end
       end
       field :switch
       field :switch_mode do
@@ -71,22 +77,54 @@ RailsAdmin.config do |config|
     end
   end
   
-  config.model 'Input' do
+  config.model Input do
     edit do
       field :name
       field :ip_address do
-        partial "input_device_ip_address"
+        def render
+          if bindings[:object].ip_address.present?
+            devices = {bindings[:object].topic => bindings[:object].ip_address}
+          else
+            devices = get_network_devices
+          end
+        
+        bindings[:view].render partial: 'input_device_ip_address', :locals => {:field => self, :form => bindings[:form], network_devices: devices}
+        end
       end
     end
   end
 
-  config.model 'Sensor' do
-    edit do
-      field :sensor_type do
-        partial "sensor_type"
-      end
-      field :gpio
-      field :input
+  def get_network_devices
+    network_devices = {}
+    scanner = HttpScanner.new
+    tasmota_addresses = scanner.scan('tasmota')
+    all_ip_addresses = []
+    slaves = SlaveSwitch.all
+    inputs = Input.all
+    switches = Switch.all
+
+    slaves.each do |slave|
+      all_ip_addresses << slave.ip_address
     end
+
+    inputs.each do |input|
+      all_ip_addresses << input.ip_address
+    end
+
+    switches.each do |switch|
+      all_ip_addresses << switch.ip_address
+    end
+
+    tasmota_addresses = tasmota_addresses - all_ip_addresses
+
+    tasmota_addresses.each do |ip|
+      network_devices[get_device_topic(ip)] = ip 
+    end
+
+    return network_devices
+  end
+
+  def get_device_topic(ip)
+    JSON.parse(HTTP.get("http://#{ip}/cm?cmnd=status+0").body.to_str)["Status"]["Topic"]
   end
 end
