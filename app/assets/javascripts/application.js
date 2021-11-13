@@ -83,6 +83,7 @@ function enableDraggable(e) {
 	});
 
 	$(e).draggable('enable');
+	swiper.disable();
 
 	var button = getEditButton();
 	button.classList.remove('btn-success');
@@ -92,6 +93,7 @@ function enableDraggable(e) {
 
 function disableDraggable(e) {
 	$(e).draggable('disable');
+	swiper.enable();
 
 	var button = getEditButton();
 	button.classList.remove('btn-warning');
