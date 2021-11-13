@@ -7,6 +7,7 @@ class SlaveSwitch < ApplicationRecord
   def setup_device
     self.update(topic: generate_topic(self))
     Device.new(device: self, type: "sonoff_mini").initialize_device
+    remove_network_device(self.ip_address)
   end
 
   def update_switch

@@ -5,6 +5,7 @@ class Switch < ApplicationRecord
 	def setup_switch
 		self.update(topic: generate_topic(self), coordinates: "1%,1%", state: false)
 		Device.new(device: self, type: "sonoff_mini").initialize_device
+		remove_network_device(self.ip_address)
 	end
 
 	def update_switch
