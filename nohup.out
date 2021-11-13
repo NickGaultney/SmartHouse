@@ -1352,4 +1352,66 @@ New message received on topic: stat/Switch_1_Garage/POWER
 New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
 >>>ON
 New message received on topic: stat/Switch_4_DUMMY_DEVICE/POWER
+>>>OFF#<Thread:0x0000560f6686ac10 /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:130 run> terminated with exception (report_on_exception is true):
+/home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/core.rb:177:in `find': Couldn't find Switch with 'id'= (ActiveRecord::RecordNotFound)
+	from /home/squirrel/SmartHouse/lib/wtmqtt.rb:46:in `switch_action'
+	from /home/squirrel/SmartHouse/lib/wtmqtt.rb:18:in `block in on_message'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+rake aborted!
+ActiveRecord::RecordNotFound: Couldn't find Switch with 'id'=
+/home/squirrel/SmartHouse/lib/wtmqtt.rb:46:in `switch_action'
+/home/squirrel/SmartHouse/lib/wtmqtt.rb:18:in `block in on_message'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+Subscribed
+New message received on topic: stat/Switch__Front_Porch/POWER
+>>>OFF
+#<Thread:0x0000563338be9e18 /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:130 run> terminated with exception (report_on_exception is true):
+/home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/core.rb:177:in `find': Couldn't find Switch with 'id'= (ActiveRecord::RecordNotFound)
+	from /home/squirrel/SmartHouse/lib/wtmqtt.rb:47:in `switch_action'
+	from /home/squirrel/SmartHouse/lib/wtmqtt.rb:19:in `block in on_message'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+rake aborted!
+ActiveRecord::RecordNotFound: Couldn't find Switch with 'id'=
+/home/squirrel/SmartHouse/lib/wtmqtt.rb:47:in `switch_action'
+/home/squirrel/SmartHouse/lib/wtmqtt.rb:19:in `block in on_message'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+Subscribed
+New message received on topic: stat/Switch__Front_Porch/POWER
+>>>OFF
+#<Thread:0x00005654a9beaa38 /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:130 run> terminated with exception (report_on_exception is true):
+/home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/activerecord-5.2.4.4/lib/active_record/core.rb:177:in `find': Couldn't find Switch with 'id'= (ActiveRecord::RecordNotFound)
+	from /home/squirrel/SmartHouse/lib/wtmqtt.rb:47:in `switch_action'
+	from /home/squirrel/SmartHouse/lib/wtmqtt.rb:19:in `block in on_message'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	from /home/squirrel/.rbenv/versions/2.7.0/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+rake aborted!
+ActiveRecord::RecordNotFound: Couldn't find Switch with 'id'=
+/home/squirrel/SmartHouse/lib/wtmqtt.rb:47:in `switch_action'
+/home/squirrel/SmartHouse/lib/wtmqtt.rb:19:in `block in on_message'
+Tasks: TOP => wtmqtt:subscribe
+(See full trace by running task with --trace)
+Subscribed
+New message received on topic: stat/Switch__Front_Porch/POWER
 >>>OFF
