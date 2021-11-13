@@ -38,6 +38,10 @@ class WTMQTT
     	@client.subscribe([topic, 1])
 	end
 
+	def toggle_light(topic)
+		@client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
+	end
+
 	def change_light(topic, payload)
 		@client.publish("cmnd/#{topic}/Power", payload, false, 1)
 	end
