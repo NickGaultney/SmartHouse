@@ -1,0 +1,2 @@
+class NetworkDevice < ApplicationRecord
+end

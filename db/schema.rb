@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_225312) do
+ActiveRecord::Schema.define(version: 2021_11_13_063916) do
 
   create_table "inputs", force: :cascade do |t|
     t.string "name"
+    t.string "ip_address"
+    t.string "topic"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "network_devices", force: :cascade do |t|
     t.string "ip_address"
     t.string "topic"
     t.datetime "created_at", null: false

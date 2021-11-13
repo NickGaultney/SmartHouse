@@ -1415,3 +1415,9 @@ Tasks: TOP => wtmqtt:subscribe
 Subscribed
 New message received on topic: stat/Switch__Front_Porch/POWER
 >>>OFF
+rake aborted!
+SyntaxError: /home/squirrel/SmartHouse/lib/rails_admin/scan_network.rb:64: syntax error, unexpected end-of-input, expecting `end'
+/home/squirrel/SmartHouse/config/initializers/rails_admin.rb:1:in `<main>'
+/home/squirrel/SmartHouse/config/environment.rb:5:in `<main>'
+Tasks: TOP => wtmqtt:subscribe => environment
+(See full trace by running task with --trace)

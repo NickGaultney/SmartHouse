@@ -1,3 +1,5 @@
+require Rails.root.join('lib', 'rails_admin', 'scan_network.rb')
+
 RailsAdmin.config do |config|
 
   ### Popular gems integration
@@ -33,6 +35,8 @@ RailsAdmin.config do |config|
     edit
     delete
     show_in_app
+
+    scan_network
 
     ## With an audit adapter, you can add:
     # history_index
@@ -94,37 +98,18 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model NetworkDevice do
+    visible do
+      false
+    end
+  end
+
   def get_network_devices
     network_devices = {}
-    scanner = HttpScanner.new
-    tasmota_addresses = scanner.scan('tasmota')
-    all_ip_addresses = []
-    slaves = SlaveSwitch.all
-    inputs = Input.all
-    switches = Switch.all
-
-    slaves.each do |slave|
-      all_ip_addresses << slave.ip_address
-    end
-
-    inputs.each do |input|
-      all_ip_addresses << input.ip_address
-    end
-
-    switches.each do |switch|
-      all_ip_addresses << switch.ip_address
-    end
-
-    tasmota_addresses = tasmota_addresses - all_ip_addresses
-
-    tasmota_addresses.each do |ip|
-      network_devices[get_device_topic(ip)] = ip 
+    NetworkDevice.all.each do |device|
+      network_devices[device.topic] = device.ip_address
     end
 
     return network_devices
-  end
-
-  def get_device_topic(ip)
-    JSON.parse(HTTP.get("http://#{ip}/cm?cmnd=status+0").body.to_str)["Status"]["Topic"]
   end
 end

@@ -1,5 +1,6 @@
 #commit test
 Rails.application.routes.draw do
+  resources :network_devices
   resources :inputs
   resources :switches
   resources :slave_switches

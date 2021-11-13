@@ -1,0 +1,2 @@
+module NetworkDevicesHelper
+end

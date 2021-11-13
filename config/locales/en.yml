@@ -31,3 +31,9 @@
 
 en:
   hello: "Hello world"
+  admin:
+    actions:
+      scan_network:
+        title: "Scan Network"
+        breadcrumb: "Scan Network"
+        menu: "Scan Network"
