@@ -38,8 +38,8 @@ class WTMQTT
     	@client.subscribe([topic, 1])
 	end
 
-	def toggle_light(topic)
-		@client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
+	def change_light(topic, payload)
+		@client.publish("cmnd/#{topic}/Power", payload, false, 1)
 	end
 
 	def switch_action(id, payload)
@@ -50,8 +50,9 @@ class WTMQTT
 	end
 
 	def slaveswitch_action(id, payload)
+		puts SlaveSwitch.find(id).switch_id
 		device = Switch.find(SlaveSwitch.find(id).switch_id)
-	    toggle_light(device.topic)
+	    change_light(device.topic, payload)
 
 	    HTTP.get("http://localhost:3000/bump?id=#{device.id}")
 	end
