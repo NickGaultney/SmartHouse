@@ -61,6 +61,14 @@ class WTMQTT
 	    HTTP.get("http://localhost:3000/bump?id=#{device.id}")
 	end
 
+	def update_config(topic, command)
+		self.connect
+
+		@client.publish("cmnd/#{topic}/backlog", command, false, 1)
+
+		self.disconnect
+	end
+
 	private
 		def confirm_subscription
 			### Register a callback on suback to assert the subcription

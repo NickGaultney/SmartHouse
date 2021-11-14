@@ -1,5 +1,10 @@
 <select class="form-select" aria-label="Default select example" name="slave_switch[switch_mode]" id="slave_switch_switch_mode">
-  <option value="15" selected>None</option>
+  <% if current_mode %>
+    <option value=<%= current_mode %> selected></option>
+    <option value="15">None</option>
+  <%else%>
+    <option value="15" selected>None</option>
+  <%end%>
   <option value="0">Toggle</option>
   <option value="1">Follow</option>
   <option value="2">Inverted Follow</option>

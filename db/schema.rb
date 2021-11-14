@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_063916) do
+ActiveRecord::Schema.define(version: 2021_11_13_235800) do
 
   create_table "inputs", force: :cascade do |t|
     t.string "name"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2021_11_13_063916) do
     t.string "ip_address"
     t.string "topic"
     t.string "switch_mode"
+    t.boolean "enable_relay"
     t.index ["switch_id"], name: "index_slave_switches_on_switch_id"
   end
 

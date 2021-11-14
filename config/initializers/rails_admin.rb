@@ -76,8 +76,11 @@ RailsAdmin.config do |config|
       end
       field :switch
       field :switch_mode do
-        partial "switch_mode"
+        def render
+          bindings[:view].render partial: 'switch_mode', :locals => {:field => self, :form => bindings[:form], current_mode: bindings[:object].switch_mode}
+        end
       end
+      field :enable_relay
     end
   end
   

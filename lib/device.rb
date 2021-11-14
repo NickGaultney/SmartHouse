@@ -19,7 +19,11 @@ class Device
 
 	private
 		def append_sonoff_mini
-			append_template '{"NAME":"Sonoff MINIR2","GPIO":"[32,0,0,0,160,0,0,0,224,320,0,0,0]","FLAG":0,"BASE":1}'.gsub(" ", "%20").gsub("\"", "%22")
+			if @device.respond_to?(:enable_relay) && !@device.enable_relay
+				append_template('{"NAME":"Sonoff MINIR2","GPIO":[32,0,0,0,160,0,0,0,0,224,0,0,0,0],"FLAG":0,"BASE":18}'.gsub(" ", "%20").gsub("\"", "%22"))
+			else
+				append_template('{"NAME":"Sonoff MINIR2","GPIO":[32,0,0,0,160,0,0,0,224,288,0,0,0,0],"FLAG":0,"BASE":18}'.gsub(" ", "%20").gsub("\"", "%22"))
+			end
 		end
 
 		def append_esp32
