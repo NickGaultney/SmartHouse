@@ -1,2 +1,0 @@
-class SlaveSwitchesController < ApplicationController
-end

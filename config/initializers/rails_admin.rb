@@ -42,7 +42,7 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
-
+=begin
   config.model Switch do
     edit do
       field :name
@@ -100,6 +100,7 @@ RailsAdmin.config do |config|
       end
     end
   end
+=end
 
   config.model NetworkDevice do
     visible do

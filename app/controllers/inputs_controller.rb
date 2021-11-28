@@ -1,2 +1,0 @@
-class InputsController < ApplicationController
-end
