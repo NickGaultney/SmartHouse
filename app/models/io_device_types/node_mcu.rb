@@ -1,0 +1,3 @@
+class NodeMcu < IoDevice
+
+end

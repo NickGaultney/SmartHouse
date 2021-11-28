@@ -42,6 +42,34 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  config.model TasmotaConfig do
+    edit do
+      field :name
+      field :gpio
+      field :switch_state
+    end
+  end
+
+  config.model IoDevice do
+    edit do
+      field :name
+      field :topic
+      field :ip_address do
+        def render
+          if bindings[:object].ip_address.present?
+            devices = {bindings[:object].topic => bindings[:object].ip_address}
+          else
+            devices = get_network_devices
+          end
+
+          bindings[:view].render partial: 'io_device_ip_address', :locals => {:field => self, :form => bindings[:form], network_devices: devices}
+        end
+      end
+      field :device_type
+      field :tasmota_config
+    end
+  end
 =begin
   config.model Switch do
     edit do

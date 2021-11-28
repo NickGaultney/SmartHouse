@@ -4,24 +4,7 @@ module RailsAdmin
 	    network_devices = {}
 	    scanner = HttpScanner.new
 	    tasmota_addresses = scanner.scan('tasmota')
-	    all_ip_addresses = []
-	    slaves = SlaveSwitch.all
-	    inputs = Input.all
-	    switches = Switch.all
 
-	    slaves.each do |slave|
-	      all_ip_addresses << slave.ip_address
-	    end
-
-	    inputs.each do |input|
-	      all_ip_addresses << input.ip_address
-	    end
-
-	    switches.each do |switch|
-	      all_ip_addresses << switch.ip_address
-	    end
-
-	    tasmota_addresses = tasmota_addresses - all_ip_addresses
 
 	    tasmota_addresses.each do |ip|
 	      network_devices[get_device_topic(ip)] = ip 

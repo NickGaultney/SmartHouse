@@ -1,5 +1,11 @@
 #commit test
 Rails.application.routes.draw do
+  resources :groups
+  resources :buttons
+  resources :outputs
+  resources :inputs
+  resources :io_devices
+  resources :tasmota_configs
   resources :network_devices
   resources :inputs
   resources :switches

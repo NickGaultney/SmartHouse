@@ -10,14 +10,59 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_13_235800) do
+ActiveRecord::Schema.define(version: 2021_11_28_004007) do
+
+  create_table "buttons", force: :cascade do |t|
+    t.string "coordinates"
+    t.string "icon"
+    t.string "buttonable_type"
+    t.integer "buttonable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["buttonable_type", "buttonable_id"], name: "index_buttons_on_buttonable_type_and_buttonable_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "inputs", force: :cascade do |t|
     t.string "name"
-    t.string "ip_address"
-    t.string "topic"
+    t.string "nickname"
+    t.string "switch_mode"
+    t.boolean "state"
+    t.string "input_type"
+    t.integer "io_device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["io_device_id"], name: "index_inputs_on_io_device_id"
+  end
+
+  create_table "inputs_groups", id: false, force: :cascade do |t|
+    t.integer "input_id"
+    t.integer "group_id"
+    t.index ["group_id"], name: "index_inputs_groups_on_group_id"
+    t.index ["input_id"], name: "index_inputs_groups_on_input_id"
+  end
+
+  create_table "inputs_outputs", id: false, force: :cascade do |t|
+    t.integer "input_id"
+    t.integer "output_id"
+    t.index ["input_id"], name: "index_inputs_outputs_on_input_id"
+    t.index ["output_id"], name: "index_inputs_outputs_on_output_id"
+  end
+
+  create_table "io_devices", force: :cascade do |t|
+    t.string "name"
+    t.string "topic"
+    t.string "ip_address"
+    t.string "device_type"
+    t.integer "tasmota_config_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tasmota_config_id"], name: "index_io_devices_on_tasmota_config_id"
   end
 
   create_table "network_devices", force: :cascade do |t|
@@ -27,34 +72,28 @@ ActiveRecord::Schema.define(version: 2021_11_13_235800) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sensors", force: :cascade do |t|
-    t.string "sensor_type"
-    t.integer "gpio"
-    t.integer "input_id"
+  create_table "outputs", force: :cascade do |t|
+    t.string "name"
+    t.string "nickname"
+    t.boolean "state"
+    t.string "output_type"
+    t.integer "io_device_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "state"
-    t.index ["input_id"], name: "index_sensors_on_input_id"
+    t.index ["io_device_id"], name: "index_outputs_on_io_device_id"
   end
 
-  create_table "slave_switches", force: :cascade do |t|
-    t.string "name"
-    t.integer "switch_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "ip_address"
-    t.string "topic"
-    t.string "switch_mode"
-    t.boolean "enable_relay"
-    t.index ["switch_id"], name: "index_slave_switches_on_switch_id"
+  create_table "outputs_groups", id: false, force: :cascade do |t|
+    t.integer "output_id"
+    t.integer "group_id"
+    t.index ["group_id"], name: "index_outputs_groups_on_group_id"
+    t.index ["output_id"], name: "index_outputs_groups_on_output_id"
   end
 
-  create_table "switches", force: :cascade do |t|
+  create_table "tasmota_configs", force: :cascade do |t|
     t.string "name"
-    t.string "topic"
-    t.string "ip_address"
-    t.boolean "state"
-    t.string "coordinates", default: "1%,1%"
+    t.string "gpio"
+    t.string "switch_state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

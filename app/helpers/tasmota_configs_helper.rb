@@ -1,0 +1,2 @@
+module TasmotaConfigsHelper
+end
