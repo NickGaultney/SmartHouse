@@ -1,0 +1,3 @@
+class Relay < Output
+
+end

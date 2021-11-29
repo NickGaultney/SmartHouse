@@ -1,0 +1,3 @@
+class VirtualSwitch < Input
+
+end
