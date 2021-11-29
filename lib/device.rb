@@ -3,7 +3,7 @@ require 'http'
 class Device
 	attr_reader :payload
 
-	def initialize(device:, host: "192.168.1.96", port: 1883, user: "homeiot", password: "12345678")
+	def initialize(device:, host: ENV["MQTT_HOST"], port: 1883, user: ENV["MQTT_USERNAME"], password: ENV["MQTT_PASSWORD"])
 		@device = device
 		@payload = "http://#{device.ip_address}/cm?cmnd=backlog%20mqtthost%20#{host}%3Bmqttuser%20#{user}%3Bmqttpassword%20#{password}%3Btopic%20#{device.topic}%3B"
 		

@@ -1,5 +1,5 @@
 class WTMQTT
-	def initialize(ip: "192.168.1.96", port: 1883, user: "homeiot", password: "12345678")
+	def initialize(ip: ENV["MQTT_HOST"], port: 1883, user: ENV["MQTT_USERNAME"], password: ENV["MQTT_PASSWORD"])
 		@client = PahoMqtt::Client.new({host: ip, port: port, ssl: false, username: user, password: password})
 		@ip = ip
 		@port = port
@@ -96,7 +96,7 @@ class WTMQTT
 		end
 
 		def self.connect
-			client = PahoMqtt::Client.new({host: "192.168.1.96", port: 1883, ssl: false, username: 'homeiot', password: '12345678'})
+			client = PahoMqtt::Client.new({host: ENV["MQTT_HOST"], port: 1883, ssl: false, username: ENV["MQTT_USERNAME"], password: ENV["MQTT_PASSWORD"]})
   
 			### Register a callback for puback event when receiving a puback
 			waiting_puback = true
@@ -105,7 +105,7 @@ class WTMQTT
 			end
 
 			begin 
-				client.connect("192.168.1.96", 1883)
+				client.connect(ENV["MQTT_HOST"], 1883)
 			rescue PahoMqtt::Exception
 				#Rails.logger.info "Failed to connect to #{device.ip_address}: is #{device.name} online?"
 				return nil
