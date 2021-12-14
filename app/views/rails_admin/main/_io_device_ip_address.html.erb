@@ -1,0 +1,5 @@
+<select class="form-select" aria-label="Default select example" name="io_device[ip_address]" id="io_device_ip_address">
+  <% network_devices.each do |topic, ip| %>
+	  <option value=<%= ip %>><%= topic %></option>
+  <% end %>
+</select>
