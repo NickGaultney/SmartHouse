@@ -28,11 +28,11 @@ $(document).on('turbolinks:load', function() {
     		ui.draggable.css("top", top);
 
         	$.ajax({
-			  url: "/switches/" + ui.draggable.attr("data-id"),
+			  url: "/buttons/" + ui.draggable.attr("data-id"),
 			  type: "put",
 			  data: {
 			  	authenticity_token: $('[name="csrf-token"]')[0].content,
-			  	switch: {
+			  	button: {
 			  		coordinates: left + "," + top
 			  	}
 			  },

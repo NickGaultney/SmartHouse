@@ -1,7 +1,14 @@
 desc 'Stop rails server'
 task :stop do
-  File.new("tmp/pids/server.pid").tap { |f| `kill -9 #{f.read.to_i}` }
-  File.new("tmp/pids/mqtt.pid").tap { |f| `kill -9 #{f.read.to_i}` }
+  begin
+    File.new("tmp/pids/server.pid").tap { |f| `kill -9 #{f.read.to_i}` }
+  rescue
+  end
+
+  begin
+    File.new("tmp/pids/mqtt.pid").tap { |f| `kill -9 #{f.read.to_i}` }
+  rescue
+  end
 end
 
 desc 'Starts both servers'
@@ -10,23 +17,25 @@ task :start do
   Process.exec("rails s -b 0.0.0.0 -d")
 end
 
-desc 'Starts rails server'
-task :rstart do
+desc 'Starts rails servers'
+task :rs do
   Process.exec("rails s -b 0.0.0.0 -d")
 end
 
-desc 'Starts mqtt server'
-task :mstart do
+desc 'Starts mqtt servers'
+task :ms do
   Process.spawn("nohup rake wtmqtt:subscribe &")
 end
 
 desc 'Starts mqtt server and listen'
 task :mlisten do
+  Process.exec("rails s -b 0.0.0.0 -d")
   Process.spawn("rake wtmqtt:subscribe")
 end
 
 desc 'Starts rails server and listen'
 task :rlisten do
+  Process.spawn("nohup rake wtmqtt:subscribe &")
   Process.exec("rails s -b 0.0.0.0")
 end
 

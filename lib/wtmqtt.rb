@@ -1,4 +1,31 @@
 class WTMQTT
+
+	def self.publish
+		client = PahoMqtt::Client.new({host: ENV["MQTT_HOST"], port: 1883, ssl: false, username: ENV["MQTT_USERNAME"], password: ENV["MQTT_PASSWORD"]})
+
+		### Register a callback for puback event when receiving a puback
+		waiting_puback = true
+		client.on_puback do
+		  waiting_puback = false
+		  Rails.logger.info "Message Acknowledged"
+		end
+
+		begin 
+			client.connect(ENV["MQTT_HOST"], 1883)
+		rescue PahoMqtt::Exception
+		    #Rails.logger.info "Failed to connect to #{device.ip_address}: is #{device.name} online?"
+		else
+
+			yield(client)
+
+		    while waiting_puback do
+			  sleep 0.001
+			end
+
+		    client.disconnect
+		end
+	end
+
 	def initialize(ip: ENV["MQTT_HOST"], port: 1883, user: ENV["MQTT_USERNAME"], password: ENV["MQTT_PASSWORD"])
 		@client = PahoMqtt::Client.new({host: ip, port: port, ssl: false, username: user, password: password})
 		@ip = ip
@@ -16,6 +43,7 @@ class WTMQTT
 		  device = nil
 
 		  self.send(type.downcase + "_action", id, packet.payload)
+		  puts "done"
 		end
 	end
 
@@ -38,6 +66,7 @@ class WTMQTT
     	@client.subscribe([topic, 1])
 	end
 
+=begin
 	def toggle_light(topic)
 		@client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
 	end
@@ -45,7 +74,6 @@ class WTMQTT
 	def change_light(topic, payload)
 		@client.publish("cmnd/#{topic}/Power", payload, false, 1)
 	end
-
 	def switch_action(id, payload)
 		device = Switch.find(id)
 		device.update(state: get_state(payload))
@@ -60,7 +88,6 @@ class WTMQTT
 
 	    HTTP.get("http://localhost:3000/bump?id=#{device.id}")
 	end
-
 	def update_config(topic, command)
 		self.connect
 
@@ -68,6 +95,7 @@ class WTMQTT
 
 		self.disconnect
 	end
+=end
 
 	private
 		def confirm_subscription
@@ -79,7 +107,6 @@ class WTMQTT
 
 		def confirm_publish
 			### Register a callback for puback event when receiving a puback
-			waiting_puback = true
 			@client.on_puback do
 				waiting_puback = false
 				puts "Message Acknowledged"
@@ -88,29 +115,26 @@ class WTMQTT
 
 		def parse_topic(topic)
 			split = topic.split("/")[1].split("_")
-			return [split[1], split[0]]
+			return [split[-2], split[-1]]
 		end
 
 		def get_state(payload)
 			payload == "OFF" ? false : true
 		end
 
-		def self.connect
-			client = PahoMqtt::Client.new({host: ENV["MQTT_HOST"], port: 1883, ssl: false, username: ENV["MQTT_USERNAME"], password: ENV["MQTT_PASSWORD"]})
-  
-			### Register a callback for puback event when receiving a puback
-			waiting_puback = true
-			client.on_puback do
-				waiting_puback = false
-			end
+		def sonoffminir2_action(id, payload)
+			relay = SonoffMiniR2.find(id).outputs.first
+			relay.update(state: get_state(payload))
+			puts "Button: #{relay.buttons.first.id} has been updated"
 
-			begin 
-				client.connect(ENV["MQTT_HOST"], 1883)
-			rescue PahoMqtt::Exception
-				#Rails.logger.info "Failed to connect to #{device.ip_address}: is #{device.name} online?"
-				return nil
-			else
-				return [client, waiting_puback]
-			end
+			ActionCable.server.broadcast(
+		      'buttons',
+		      state: get_state(payload),
+		      id: relay.buttons.first.id
+		    )
+
+			#relay.buttons.each do |button|
+			#	HTTP.get("http://localhost:3000/bump?id=#{button.id}")
+			#end
 		end
 end
