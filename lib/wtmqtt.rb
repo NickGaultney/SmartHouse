@@ -39,11 +39,8 @@ class WTMQTT
 	def on_message
 		@client.on_message do |packet|
 		  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
-		  id, type = parse_topic(packet.topic)
-		  device = nil
 
-		  self.send(type.downcase + "_action", id, packet.payload)
-		  puts "done"
+		  self.send(get_device_type(packet).downcase + "_action", packet)
 		end
 	end
 
@@ -113,28 +110,52 @@ class WTMQTT
 			end
 		end
 
-		def parse_topic(topic)
-			split = topic.split("/")[1].split("_")
-			return [split[-2], split[-1]]
+		def get_device_type(packet)
+			packet.topic.split("/")[1].split("_")[-1]
 		end
 
-		def get_state(payload)
-			payload == "OFF" ? false : true
+		def get_device_id(packet)
+			packet.topic.split("/")[1].split("_")[-2]
 		end
 
-		def sonoffminir2_action(id, payload)
-			relay = SonoffMiniR2.find(id).outputs.first
-			relay.update(state: get_state(payload))
-			puts "Button: #{relay.buttons.first.id} has been updated"
+		def io_type(packet)
+			packet.topic.split("/")[2]
+		end
 
-			ActionCable.server.broadcast(
-		      'buttons',
-		      state: get_state(payload),
-		      id: relay.buttons.first.id
-		    )
+		def relay_state(packet)
+			packet.payload == "OFF" ? false : true
+		end
 
-			#relay.buttons.each do |button|
-			#	HTTP.get("http://localhost:3000/bump?id=#{button.id}")
-			#end
+		def switch_state(packet)
+			packet.payload.split(":")[1] == "0" ? false : true
+		end
+
+		def sonoffminir2_action(packet)
+			type = io_type(packet).downcase
+			device = SonoffMiniR2.find(get_device_id(packet))
+
+			if type == 'power'
+				relay = device.outputs.first
+				relay.update(state: relay_state(packet))
+
+				unless relay.buttons.empty?
+					ActionCable.server.broadcast(
+				      'buttons',
+				      state: relay_state(packet),
+				      id: relay.buttons.first.id
+				    )
+				end
+			elsif type == 'switch'
+				switch = device.inputs.first
+				switch.update(state: switch_state(packet))
+
+				unless switch.buttons.empty?
+					ActionCable.server.broadcast(
+				      'buttons',
+				      state: switch_state(packet),
+				      id: switch.buttons.first.id
+				    )
+				end
+			end	
 		end
 end

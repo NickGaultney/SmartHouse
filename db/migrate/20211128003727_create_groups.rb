@@ -6,14 +6,14 @@ class CreateGroups < ActiveRecord::Migration[5.2]
       t.timestamps
     end
 
-    create_table :inputs_groups, id: false do |t|
-      t.belongs_to :input
+    create_table :groups_inputs, id: false do |t|
       t.belongs_to :group
+      t.belongs_to :input
     end
 
-    create_table :outputs_groups, id: false do |t|
-      t.belongs_to :output
+    create_table :groups_outputs, id: false do |t|
       t.belongs_to :group
+      t.belongs_to :output
     end
   end
 end

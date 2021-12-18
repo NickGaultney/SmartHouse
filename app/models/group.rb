@@ -1,7 +1,4 @@
 class Group < ApplicationRecord
-	has_many :buttons, as: :buttonable
-
-	def buttonable_action
-
-	end
+	has_and_belongs_to_many :outputs
+	has_and_belongs_to_many :inputs
 end

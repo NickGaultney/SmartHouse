@@ -84,6 +84,8 @@ RailsAdmin.config do |config|
         end
       end
       field :io_device
+      field :groups
+      field :outputs
     end
   end
 
@@ -96,6 +98,13 @@ RailsAdmin.config do |config|
         end
       end
       field :io_device
+    end
+  end
+
+  config.model Group do
+    edit do
+      field :name
+      field :outputs
     end
   end
 
@@ -136,6 +145,12 @@ RailsAdmin.config do |config|
   end
 
   config.model VirtualSwitch do
+    visible do
+      false
+    end
+  end
+
+  config.model Relay do
     visible do
       false
     end
