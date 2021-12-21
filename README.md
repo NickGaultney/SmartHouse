@@ -13,7 +13,12 @@ Install rails: https://www.digitalocean.com/community/tutorials/how-to-install-r
 1) sudo apt install git curl libssl-dev libreadline-dev zlib1g-dev autoconf bison build-essential libyaml-dev libreadline-dev libncurses5-dev libffi-dev libgdbm-dev
 2) curl -fsSL https://github.com/rbenv/rbenv-installer/raw/HEAD/bin/rbenv-installer | bash
 3) echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+3.5) echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.profile
 4) echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+4.5) echo 'eval "$(rbenv init -)"' >> ~/.profile
+4.6) export MQTT_USERNAME="homeiot"
+4.7) export MQTT_PASSWORD="12345678"
+4.8) export MQTT_HOST=""
 5) source ~/.bashrc
 6) git clone https://github.com/rbenv/ruby-build.git
 7) PREFIX=/usr/local sudo ./ruby-build/install.sh
