@@ -28,3 +28,5 @@ Install rails: https://www.digitalocean.com/community/tutorials/how-to-install-r
 15) git clone https://github.com/NickGaultney/SmartHouse.git
 16) cd SmartHouse
 17) bundle install
+18) curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
+19) sudo apt install -y nodejs
