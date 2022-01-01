@@ -5,7 +5,7 @@ class IoDevice < ApplicationRecord
   has_many :outputs, dependent: :destroy
   belongs_to :tasmota_config
 
-  before_save :update_topic, if: :will_save_change_to_topic?
+  before_save :update_topic, if: :will_save_change_to_name?
   after_create :setup_device
   after_update :update_device
 

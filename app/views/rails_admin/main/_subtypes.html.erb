@@ -1,4 +1,7 @@
 <select class="form-select" aria-label="Default select example" name="<%=model_name%>[<%=field_name%>]" id="<%=model_name + "_" + field_name%>">
+  <% unless current_type.nil? %>
+    <option value=<%= current_type %> selected><%= current_type %></option>
+  <%end%>
   <% subtypes.each do |subtype| %>
     <option value=<%= subtype %>><%= subtype %></option>
   <% end %>

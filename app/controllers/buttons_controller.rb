@@ -14,6 +14,7 @@ class ButtonsController < ApplicationController
 
   	def show
   		@button.buttonable.buttonable_action
+  		#Rails.logger.info @button.buttonable.name
   		redirect_to root_path
   	end
 
