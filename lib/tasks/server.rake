@@ -13,8 +13,9 @@ end
 
 desc 'Starts both servers'
 task :start do
-  system("screen -dmS mqtt_server rake wtmqtt:subscribe")
-  system("screen -dmS rails_server rails s -b 0.0.0.0")
+  system("screen -dmS mqtt rake wtmqtt:subscribe")
+  system("screen -dmS rails rails s -b 0.0.0.0")
+  system("screen -dmS sidekiq bundle exec sidekiq")
 end
 
 desc 'Starts rails servers'
