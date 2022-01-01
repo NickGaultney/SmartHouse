@@ -13,8 +13,8 @@ end
 
 desc 'Starts both servers'
 task :start do
-  Process.spawn("nohup rake wtmqtt:subscribe &")
-  Process.exec("rails s -b 0.0.0.0 -d")
+  system("screen -dmS mqtt_server rake wtmqtt:subscribe")
+  system("screen -dmS rails_server rails s -b 0.0.0.0")
 end
 
 desc 'Starts rails servers'
