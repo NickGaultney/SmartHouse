@@ -37,6 +37,8 @@ RailsAdmin.config do |config|
     show_in_app
 
     scan_network
+    settings
+    upload_floor_plan
 
     ## With an audit adapter, you can add:
     # history_index

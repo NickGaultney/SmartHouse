@@ -1,0 +1,27 @@
+<h1>Smart House Settings</h1>
+
+<table class="table table-condensed table-striped">
+	<thead>
+		<tr>
+			<th class="shrink download"></th>
+			<th class="shrink download"></th>
+			<th class="shrink upload"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="odd">
+			<td>
+				<span class="show">Upload Floor Plan</span>
+			</td>
+
+			<td>
+				<%= form_with url: upload_floor_plan_path, id: "upload-form" do |f| %>
+					<div class="form-group">
+						<%= f.file_field :image, id: "upload-field", class: "text-light" %>
+						<%= f.submit "Upload Sheet", class: "submit" %>
+					</div>
+				<% end %>
+			</td>
+		</tr>
+	</tbody>
+</table>	

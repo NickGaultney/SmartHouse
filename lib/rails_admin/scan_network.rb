@@ -50,6 +50,51 @@ module RailsAdmin
 		          end
 		        end
 		    end
+
+		    class Settings < CustomActionTemplate
+		        RailsAdmin::Config::Actions.register(self)
+
+		        register_instance_option :http_methods do
+		          [:get]
+		        end
+
+		        register_instance_option :controller do
+		          proc do
+		          end
+		        end
+		    end
+
+		    class UploadFloorPlan < CustomActionTemplate
+				RailsAdmin::Config::Actions.register(self)
+
+				register_instance_option :visible? do
+					false
+				end
+
+				register_instance_option :show_in_navigation do
+					false
+				end
+
+				register_instance_option :http_methods do
+					[:post]
+				end
+
+				register_instance_option :controller do
+					proc do
+					    uploaded_io = params[:image]
+
+					    File.open(Rails.root.join('public', 'settings', 'floor_plan.png'), 'wb') do |file|
+							file.write(uploaded_io.read)
+					    end
+					    flash[:notice] = "Upload Complete." 
+					    
+					    respond_to do |format|
+					    	format.html { redirect_to dashboard_path, notice: 'Upload Complete.' }
+					    	format.js { render js: 'window.top.location.reload(true);' }
+					    end
+					end
+				end
+			end
 		end
 	end
 end

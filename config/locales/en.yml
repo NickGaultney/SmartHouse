@@ -37,3 +37,9 @@ en:
         title: "Scan Network"
         breadcrumb: "Scan Network"
         menu: "Scan Network"
+      settings:
+        title: "Settings"
+        breadcrumb: "Settings"
+        menu: "Settings"
+      upload_floor_plan:
+        
