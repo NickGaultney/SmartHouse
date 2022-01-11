@@ -51,6 +51,13 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model Button do
+    edit do
+      field :icon
+      field :buttonable
+    end
+  end
+
   config.model IoDevice do
     edit do
       field :name
