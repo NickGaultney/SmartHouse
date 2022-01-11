@@ -56,6 +56,8 @@ $(document).on('turbolinks:load', function() {
 	    	swiper.slideTo(button.id);
 	  	}, 175);
 	})
+
+	swiper.disable();
 })
 
 function getEditButton() {
@@ -83,7 +85,7 @@ function enableDraggable(e) {
 	});
 
 	$(e).draggable('enable');
-	swiper.disable();
+	//swiper.disable();
 
 	var button = getEditButton();
 	button.classList.remove('btn-success');
@@ -93,7 +95,7 @@ function enableDraggable(e) {
 
 function disableDraggable(e) {
 	$(e).draggable('disable');
-	swiper.enable();
+	//swiper.enable();
 
 	var button = getEditButton();
 	button.classList.remove('btn-warning');
