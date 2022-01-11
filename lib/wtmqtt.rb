@@ -1,5 +1,4 @@
 class WTMQTT
-
 	def self.publish
 		client = PahoMqtt::Client.new({host: ENV["MQTT_HOST"], port: 1883, ssl: false, username: ENV["MQTT_USERNAME"], password: ENV["MQTT_PASSWORD"]})
 
@@ -40,7 +39,11 @@ class WTMQTT
 		@client.on_message do |packet|
 		  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
 
-		  self.send(get_device_type(packet).downcase + "_action", packet)
+		  if io_type(packet).downcase == "power"
+		  	self.send(get_device_type(packet).downcase + "_action", packet)
+		  elsif io_type(packet).downcase == "switch"
+		  	switch_action(packet)
+		  end
 		end
 	end
 
@@ -110,6 +113,14 @@ class WTMQTT
 			end
 		end
 
+		def get_input_index(payload)
+			payload.split(":")[0][5...-1].to_i
+		end
+
+		def get_input_state(payload)
+			payload.split(":")[1].to_i
+		end
+
 		def get_device_type(packet)
 			packet.topic.split("/")[1].split("_")[-1]
 		end
@@ -130,32 +141,31 @@ class WTMQTT
 			packet.payload.split(":")[1] == "0" ? false : true
 		end
 
+		def switch_action(packet)
+			device = SonoffMiniR2.find(get_device_id(packet))
+			switch = device.inputs[get_input_index(packet.payload)]
+			state = get_input_state(packet.payload)
+
+			switch.update(state: state)
+
+			switch.all_outputs.each do |output|
+				output.switch_action(state)
+			end
+		end
+
 		def sonoffminir2_action(packet)
 			type = io_type(packet).downcase
 			device = SonoffMiniR2.find(get_device_id(packet))
 
-			if type == 'power'
-				relay = device.outputs.first
-				relay.update(state: relay_state(packet))
+			relay = device.outputs.first
+			relay.update(state: relay_state(packet))
 
-				unless relay.buttons.empty?
-					ActionCable.server.broadcast(
-				      'buttons',
-				      state: relay_state(packet),
-				      id: relay.buttons.first.id
-				    )
-				end
-			elsif type == 'switch'
-				switch = device.inputs.first
-				switch.update(state: switch_state(packet))
-
-				unless switch.buttons.empty?
-					ActionCable.server.broadcast(
-				      'buttons',
-				      state: switch_state(packet),
-				      id: switch.buttons.first.id
-				    )
-				end
-			end	
+			unless relay.buttons.empty?
+				ActionCable.server.broadcast(
+			      'buttons',
+			      state: relay_state(packet),
+			      id: relay.buttons.first.id
+			    )
+			end
 		end
 end

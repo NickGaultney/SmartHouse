@@ -9,6 +9,11 @@ task :stop do
     File.new("tmp/pids/mqtt.pid").tap { |f| `kill -9 #{f.read.to_i}` }
   rescue
   end
+
+  begin
+    system("screen -X -S sidekiq quit")
+  rescue
+  end
 end
 
 desc 'Starts both servers'
