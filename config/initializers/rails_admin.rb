@@ -43,6 +43,131 @@ RailsAdmin.config do |config|
     # history_show
   end
 
+  config.model TasmotaConfig do
+    edit do
+      field :name
+      field :gpio
+      field :switch_state
+    end
+  end
+
+  config.model Button do
+    edit do
+      field :icon
+      field :buttonable
+    end
+  end
+
+  config.model IoDevice do
+    edit do
+      field :name
+      field :ip_address do
+        def render
+          if bindings[:object].ip_address.present?
+            devices = {bindings[:object].topic => bindings[:object].ip_address}
+          else
+            devices = get_network_devices
+          end
+
+          bindings[:view].render partial: 'io_device_ip_address', :locals => {:field => self, :form => bindings[:form], current_ip: bindings[:object].ip_address, network_devices: devices}
+        end
+      end
+      field :device_type do
+        def render
+          bindings[:view].render partial: 'subtypes', :locals => {:field => self, :form => bindings[:form], field_name: "device_type", model_name: "io_device", current_type: bindings[:object].device_type, subtypes: IoDevice.subclasses.map(&:name)}
+        end
+      end
+      field :tasmota_config
+    end
+  end
+
+  config.model Input do
+    edit do
+      field :name
+      field :switch_mode do
+        def render
+          modes = ["toggle", "follow"]
+          bindings[:view].render partial: 'subtypes', :locals => {:field => self, :form => bindings[:form], field_name: "switch_mode", model_name: "input", current_type: bindings[:object].switch_mode, subtypes: modes}
+        end
+      end
+      field :input_type do
+        def render
+          bindings[:view].render partial: 'subtypes', :locals => {:field => self, :form => bindings[:form], field_name: "input_type", model_name: "input", current_type: bindings[:object].input_type, subtypes: Input.subclasses.map(&:name)}
+        end
+      end
+      field :io_device
+      field :groups
+      field :outputs
+    end
+  end
+
+  config.model Output do
+    edit do
+      field :name
+      field :output_type do
+        def render
+          bindings[:view].render partial: 'subtypes', :locals => {:field => self, :form => bindings[:form], field_name: "output_type", model_name: "output", current_type: bindings[:object].output_type, subtypes: Output.subclasses.map(&:name)}
+        end
+      end
+      field :io_device
+    end
+  end
+
+  config.model Group do
+    edit do
+      field :name
+      field :outputs
+    end
+  end
+
+  config.model NodeMcu do
+    visible do
+      false
+    end
+  end
+
+  config.model Esp32 do
+    visible do
+      false
+    end
+  end
+
+  config.model SonoffMiniR2 do
+    visible do
+      false
+    end
+  end
+
+  config.model RemoteSwitch do
+    visible do
+      false
+    end
+  end
+
+  config.model MagneticSwitch do
+    visible do
+      false
+    end
+  end
+
+  config.model Switch do
+    visible do
+      false
+    end
+  end
+
+  config.model VirtualSwitch do
+    visible do
+      false
+    end
+  end
+
+  config.model Relay do
+    visible do
+      false
+    end
+  end
+=begin
   config.model Switch do
     edit do
       field :name
@@ -100,6 +225,7 @@ RailsAdmin.config do |config|
       end
     end
   end
+=end
 
   config.model NetworkDevice do
     visible do

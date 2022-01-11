@@ -1,0 +1,2 @@
+class TasmotaConfigsController < ApplicationController
+end

@@ -1,5 +1,31 @@
 class WTMQTT
-	def initialize(ip: "192.168.1.96", port: 1883, user: "homeiot", password: "12345678")
+	def self.publish
+		client = PahoMqtt::Client.new({host: ENV["MQTT_HOST"], port: 1883, ssl: false, username: ENV["MQTT_USERNAME"], password: ENV["MQTT_PASSWORD"]})
+
+		### Register a callback for puback event when receiving a puback
+		waiting_puback = true
+		client.on_puback do
+		  waiting_puback = false
+		  Rails.logger.info "Message Acknowledged"
+		end
+
+		begin 
+			client.connect(ENV["MQTT_HOST"], 1883)
+		rescue PahoMqtt::Exception
+		    #Rails.logger.info "Failed to connect to #{device.ip_address}: is #{device.name} online?"
+		else
+
+			yield(client)
+
+		    while waiting_puback do
+			  sleep 0.001
+			end
+
+		    client.disconnect
+		end
+	end
+
+	def initialize(ip: ENV["MQTT_HOST"], port: 1883, user: ENV["MQTT_USERNAME"], password: ENV["MQTT_PASSWORD"])
 		@client = PahoMqtt::Client.new({host: ip, port: port, ssl: false, username: user, password: password})
 		@ip = ip
 		@port = port
@@ -12,10 +38,12 @@ class WTMQTT
 	def on_message
 		@client.on_message do |packet|
 		  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
-		  id, type = parse_topic(packet.topic)
-		  device = nil
 
-		  self.send(type.downcase + "_action", id, packet.payload)
+		  if io_type(packet).downcase == "power"
+		  	self.send(get_device_type(packet).downcase + "_action", packet)
+		  elsif io_type(packet).downcase == "switch"
+		  	switch_action(packet)
+		  end
 		end
 	end
 
@@ -38,6 +66,7 @@ class WTMQTT
     	@client.subscribe([topic, 1])
 	end
 
+=begin
 	def toggle_light(topic)
 		@client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
 	end
@@ -45,7 +74,6 @@ class WTMQTT
 	def change_light(topic, payload)
 		@client.publish("cmnd/#{topic}/Power", payload, false, 1)
 	end
-
 	def switch_action(id, payload)
 		device = Switch.find(id)
 		device.update(state: get_state(payload))
@@ -60,7 +88,6 @@ class WTMQTT
 
 	    HTTP.get("http://localhost:3000/bump?id=#{device.id}")
 	end
-
 	def update_config(topic, command)
 		self.connect
 
@@ -68,6 +95,7 @@ class WTMQTT
 
 		self.disconnect
 	end
+=end
 
 	private
 		def confirm_subscription
@@ -79,38 +107,65 @@ class WTMQTT
 
 		def confirm_publish
 			### Register a callback for puback event when receiving a puback
-			waiting_puback = true
 			@client.on_puback do
 				waiting_puback = false
 				puts "Message Acknowledged"
 			end
 		end
 
-		def parse_topic(topic)
-			split = topic.split("/")[1].split("_")
-			return [split[1], split[0]]
+		def get_input_index(payload)
+			payload.split(":")[0][5...-1].to_i
 		end
 
-		def get_state(payload)
-			payload == "OFF" ? false : true
+		def get_input_state(payload)
+			payload.split(":")[1].to_i
 		end
 
-		def self.connect
-			client = PahoMqtt::Client.new({host: "192.168.1.96", port: 1883, ssl: false, username: 'homeiot', password: '12345678'})
-  
-			### Register a callback for puback event when receiving a puback
-			waiting_puback = true
-			client.on_puback do
-				waiting_puback = false
+		def get_device_type(packet)
+			packet.topic.split("/")[1].split("_")[-1]
+		end
+
+		def get_device_id(packet)
+			packet.topic.split("/")[1].split("_")[-2]
+		end
+
+		def io_type(packet)
+			packet.topic.split("/")[2]
+		end
+
+		def relay_state(packet)
+			packet.payload == "OFF" ? false : true
+		end
+
+		def switch_state(packet)
+			packet.payload.split(":")[1] == "0" ? false : true
+		end
+
+		def switch_action(packet)
+			device = SonoffMiniR2.find(get_device_id(packet))
+			switch = device.inputs[get_input_index(packet.payload)]
+			state = get_input_state(packet.payload)
+
+			switch.update(state: state)
+
+			switch.all_outputs.each do |output|
+				output.switch_action(state)
 			end
+		end
 
-			begin 
-				client.connect("192.168.1.96", 1883)
-			rescue PahoMqtt::Exception
-				#Rails.logger.info "Failed to connect to #{device.ip_address}: is #{device.name} online?"
-				return nil
-			else
-				return [client, waiting_puback]
+		def sonoffminir2_action(packet)
+			type = io_type(packet).downcase
+			device = SonoffMiniR2.find(get_device_id(packet))
+
+			relay = device.outputs.first
+			relay.update(state: relay_state(packet))
+
+			unless relay.buttons.empty?
+				ActionCable.server.broadcast(
+			      'buttons',
+			      state: relay_state(packet),
+			      id: relay.buttons.first.id
+			    )
 			end
 		end
 end

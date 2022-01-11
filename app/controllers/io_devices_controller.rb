@@ -1,0 +1,2 @@
+class IoDevicesController < ApplicationController
+end

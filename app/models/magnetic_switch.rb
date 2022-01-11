@@ -1,0 +1,3 @@
+class MagneticSwitch < Input
+
+end

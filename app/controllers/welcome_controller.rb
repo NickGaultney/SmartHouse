@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
   def home
-    @switches = Switch.all
+    @buttons = Button.all
   end
 end

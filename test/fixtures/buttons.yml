@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  coordinates: MyString
+  icon: MyString
+  buttonable: one
+
+two:
+  coordinates: MyString
+  icon: MyString
+  buttonable: two

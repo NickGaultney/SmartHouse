@@ -10,6 +10,9 @@ module Template
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.autoload_paths += %W(#{config.root}/lib)
+    #config.eager_load_paths += %W(#{config.root}/app/models/io_device)
+    #config.eager_load_paths += %W(#{config.root}/app/models/input)
+    #config.eager_load_paths += %W(#{config.root}/app/models/output)
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

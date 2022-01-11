@@ -1,15 +1,29 @@
 class Input < ApplicationRecord
+  self.inheritance_column = "input_type"
 
-	after_create :setup_device
-	before_save :update_input
-	def setup_device
-		self.update(topic: generate_topic(self))
-		Device.new(device: self, type: "node_mcu").initialize_device
-		remove_network_device(self.ip_address)
-	end
+  belongs_to :io_device, optional: true   
+  has_many :buttons, as: :buttonable
+  has_and_belongs_to_many :outputs
+  has_and_belongs_to_many :groups
 
-	def update_input
-		self.topic = generate_topic(self)
-	    Device.new(device: self, type: "node_mcu").initialize_device
-	end
+  before_save :update_state
+  def update_state
+    self.state = false if state.nil?
+  end
+
+  def buttonable_action
+    self.all_outputs.each do |output|
+      output.switch_action((self.state ? 1 : 0))
+    end
+  end
+
+  def all_outputs
+    all_outputs = self.outputs
+
+    self.groups.each do |group|
+      all_outputs += group.outputs
+    end
+
+    return all_outputs
+  end
 end

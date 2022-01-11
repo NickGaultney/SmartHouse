@@ -2,10 +2,16 @@
 
 one:
   name: MyString
-  ip_address: MyString
-  topic: MyString
+  nickname: MyString
+  switch_mode: MyString
+  state: false
+  input_type: MyString
+  io_device: one
 
 two:
   name: MyString
-  ip_address: MyString
-  topic: MyString
+  nickname: MyString
+  switch_mode: MyString
+  state: false
+  input_type: MyString
+  io_device: two

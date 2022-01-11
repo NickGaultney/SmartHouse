@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  topic: MyString
+  ip_address: MyString
+  device_type: MyString
+  tasmota_config: one
+
+two:
+  name: MyString
+  topic: MyString
+  ip_address: MyString
+  device_type: MyString
+  tasmota_config: two

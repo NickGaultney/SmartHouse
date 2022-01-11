@@ -1,0 +1,3 @@
+class RemoteSwitch < Input
+
+end
