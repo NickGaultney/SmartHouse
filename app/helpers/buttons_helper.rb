@@ -18,4 +18,10 @@ module ButtonsHelper
 			return ""
 		end
 	end
+
+	def show_svg(file_name)
+	  File.open(Rails.root.join('public', 'icons', file_name+".svg"), "rb") do |file|
+	    raw file.read
+	  end
+	end
 end

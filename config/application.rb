@@ -10,6 +10,10 @@ module Template
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
     config.autoload_paths += %W(#{config.root}/lib)
+    config.assets.precompile += %w( '.svg' )  
+
+    # Must include to get inline SVGs to work in deploy
+    config.assets.css_compressor = :sass
     #config.eager_load_paths += %W(#{config.root}/app/models/io_device)
     #config.eager_load_paths += %W(#{config.root}/app/models/input)
     #config.eager_load_paths += %W(#{config.root}/app/models/output)

@@ -87,6 +87,40 @@ module RailsAdmin
 							file.write(uploaded_io.read)
 					    end
 					    flash[:notice] = "Upload Complete." 
+
+					    respond_to do |format|
+					    	format.html { redirect_to dashboard_path, notice: 'Upload Complete.' }
+					    	format.js { render js: 'window.top.location.reload(true);' }
+					    end
+					end
+				end
+			end
+
+			class IconUpload < CustomActionTemplate
+				RailsAdmin::Config::Actions.register(self)
+
+				register_instance_option :visible? do
+					false
+				end
+
+				register_instance_option :show_in_navigation do
+					false
+				end
+
+				register_instance_option :http_methods do
+					[:post]
+				end
+
+				register_instance_option :controller do
+					proc do
+					    uploaded_io = params[:icon]
+
+					    File.open(Rails.root.join('public', 'icons', params[:name]+".svg"), 'wb') do |file|
+							file.write(uploaded_io.read)
+					    end
+
+					    Icon.create(name: params[:name])
+					    flash[:notice] = "Upload Complete." 
 					    
 					    respond_to do |format|
 					    	format.html { redirect_to dashboard_path, notice: 'Upload Complete.' }

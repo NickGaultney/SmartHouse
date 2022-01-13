@@ -23,5 +23,22 @@
 				<% end %>
 			</td>
 		</tr>
+
+		<tr class="even">
+			<td>
+				<span class="show">Upload Icon</span>
+			</td>
+
+			<td>
+				<%= form_with url: icon_upload_path, id: "upload-form" do |f| %>
+					<div class="form-group">
+						<%= f.label :name, "Name" %>
+						<%= f.text_field :name, id: "name-field", class: "text-light" %>
+						<%= f.file_field :icon, id: "upload-field", class: "text-light" %>
+						<%= f.submit "Upload Icon", class: "submit" %>
+					</div>
+				<% end %>
+			</td>
+		</tr>
 	</tbody>
 </table>	

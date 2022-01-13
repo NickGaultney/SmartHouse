@@ -39,6 +39,7 @@ RailsAdmin.config do |config|
     scan_network
     settings
     upload_floor_plan
+    icon_upload
 
     ## With an audit adapter, you can add:
     # history_index
@@ -57,6 +58,16 @@ RailsAdmin.config do |config|
     edit do
       field :icon
       field :buttonable
+    end
+  end
+
+  config.model Icon do
+    edit do
+      field :name do
+        def render
+          bindings[:view].render partial: 'icon_upload', :locals => {:field => self, :form => bindings[:form]}
+        end
+      end
     end
   end
 
