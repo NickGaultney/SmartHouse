@@ -137,8 +137,25 @@ class WTMQTT
 			packet.payload == "OFF" ? false : true
 		end
 
-		def switch_state(packet)
-			packet.payload.split(":")[1] == "0" ? false : true
+		def update_switch_state(switch, state)
+			converted_state = nil
+			case state
+			when 0
+				converted_state = false
+			when 1
+				converted_state = true
+			when 2
+				converted_state = !switch.state
+			end
+			
+			switch.update(state: converted_state)
+			unless switch.buttons.empty?
+				ActionCable.server.broadcast(
+			      'buttons',
+			      state: converted_state,
+			      id: switch.buttons.first.id
+			    )
+			end
 		end
 
 		def switch_action(packet)
@@ -146,8 +163,8 @@ class WTMQTT
 			switch = device.inputs[get_input_index(packet.payload)]
 			state = get_input_state(packet.payload)
 
-			switch.update(state: state)
-
+			update_switch_state(switch, state)
+			
 			switch.all_outputs.each do |output|
 				output.switch_action(state)
 			end

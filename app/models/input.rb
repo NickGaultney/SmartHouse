@@ -12,6 +12,7 @@ class Input < ApplicationRecord
   end
 
   def buttonable_action
+    Rails.logger.info self.outputs
     self.all_outputs.each do |output|
       output.switch_action((self.state ? 1 : 0))
     end

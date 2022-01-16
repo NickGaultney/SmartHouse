@@ -9,6 +9,7 @@ class Device
 		
 		append_template
 		append_switch_mode
+		append_rules
 		close_payload
 	end
 
@@ -26,6 +27,11 @@ class Device
 			if @device.respond_to?(:switch_mode)
 				@payload += "SwitchMode%20#{@device.switch_mode}%3B" 
 			end
+		end
+
+		def append_rules
+			rule = "rule1%20ON%20switch1#state%20DO%20Backlog%20Power1%20%value%%3B%20Publish%20stat/%topic%/switch%20switch1:%value%%20ENDON%3Brule1%201%3B"
+			@payload += rule
 		end
 
 		def close_payload

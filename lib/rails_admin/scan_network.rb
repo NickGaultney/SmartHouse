@@ -114,8 +114,11 @@ module RailsAdmin
 				register_instance_option :controller do
 					proc do
 					    uploaded_io = params[:icon]
+					    #svg = Nokogiri::XML.parse(uploaded_io.read)
+					    #svg.css("svg").set(:fill, "#000000")
+					    #svg.css("svg").set(:id, "button-<%= button.id %>")
 
-					    File.open(Rails.root.join('public', 'icons', params[:name]+".svg"), 'wb') do |file|
+					    File.open(Rails.root.join('app', 'views', 'icons', "_"+params[:name]+".html.erb"), 'wb') do |file|
 							file.write(uploaded_io.read)
 					    end
 

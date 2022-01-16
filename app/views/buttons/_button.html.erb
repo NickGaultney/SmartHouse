@@ -3,12 +3,7 @@
     <div class="bulb" data-id=<%= button.id %> coords=<%= button.coordinates %> 
       style="left:<%= button.coordinates.split(',')[0] %>; top:<%= button.coordinates.split(',')[1] %>;">
 
-      <svg id="button-<%= button.id %>" height="32px" viewBox="0 0 24 24" 
-        width="32px" fill=<%= color(button) %>>
-        <title><%= name(button) %></title>
-        <%= show_svg(button.icon.name) %>
-      </svg>
-
+      <%= render svg(button), button: button %>
     </div>
     <p class="button-name"><%= name(button) %></p>
   <% end %>
