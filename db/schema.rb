@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_12_001346) do
+ActiveRecord::Schema.define(version: 2022_01_17_150134) do
 
   create_table "buttons", force: :cascade do |t|
     t.string "coordinates"
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(version: 2022_01_12_001346) do
     t.integer "icon_id"
     t.index ["buttonable_type", "buttonable_id"], name: "index_buttons_on_buttonable_type_and_buttonable_id"
     t.index ["icon_id"], name: "index_buttons_on_icon_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.boolean "enabled"
+    t.string "days_to_repeat"
+    t.date "start_date"
+    t.date "end_date"
+    t.time "time"
+    t.integer "frequency"
+    t.string "repeat_type"
+    t.string "action"
+    t.integer "input_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["input_id"], name: "index_events_on_input_id"
   end
 
   create_table "groups", force: :cascade do |t|
