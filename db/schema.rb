@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_150134) do
+ActiveRecord::Schema.define(version: 2022_01_17_213836) do
 
   create_table "buttons", force: :cascade do |t|
     t.string "coordinates"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2022_01_17_150134) do
     t.integer "input_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.time "end_time"
     t.index ["input_id"], name: "index_events_on_input_id"
   end
 

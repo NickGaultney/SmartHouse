@@ -12,10 +12,8 @@ class Input < ApplicationRecord
   end
 
   def buttonable_action
-    Rails.logger.info self.outputs
-    self.all_outputs.each do |output|
-      output.switch_action((self.state ? 1 : 0))
-    end
+    #Rails.logger.info self.outputs
+    foreach_output {|output| output.switch_action((self.state ? 1 : 0)) }
   end
 
   def all_outputs
@@ -27,4 +25,23 @@ class Input < ApplicationRecord
 
     return all_outputs
   end
+
+  def on
+    foreach_output {|output| output.switch_action(1)}
+  end
+
+  def off
+    foreach_output {|output| output.switch_action(0)}
+  end
+
+  def toggle
+    foreach_output {|output| output.switch_action(2)}
+  end
+
+  private
+    def foreach_output
+      self.all_outputs.each do |output|
+        yield(output)
+      end
+    end
 end

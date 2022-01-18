@@ -46,6 +46,26 @@ RailsAdmin.config do |config|
     # history_show
   end
 
+  config.model Event do
+    edit do
+      field :enabled
+      field :days_to_repeat do
+        def render
+          bindings[:view].render partial: 'days_of_week', :locals => {:field => self, :form => bindings[:form] }
+        end
+      end
+      field :start_date
+      field :end_date
+      field :time
+      field :action do
+        def render
+          bindings[:view].render partial: 'subtypes', :locals => {:field => self, :form => bindings[:form], field_name: "action", model_name: "event", current_type: bindings[:object].action, subtypes: ["on", "off", "toggle"]}
+        end
+      end
+      field :input
+    end
+  end
+
   config.model TasmotaConfig do
     edit do
       field :name

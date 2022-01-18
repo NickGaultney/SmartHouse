@@ -11,9 +11,7 @@ namespace :wtmqtt do
 					file.write(Process.pid.to_s)
 				end
 
-				loop do
-					sleep 60
-				end
+				sleep
 			rescue => e
 			    p e
 		    ensure
