@@ -1,63 +1,70 @@
-<div class="form-group control-group boolean_type days_to_repeat_field " id="event_enabled_field">
+<div class="form-group control-group string_type days_to_repeat_field " id="event_days_to_repeat_field">
+
+  <label class="col-sm-2 control-label" for="event_days_to_repeat"></label>
+  <div class="col-sm-10 controls">
+    <input class="form-control" size="50" type="text" name="event[days_to_repeat]" id="event_days_to_repeat" value=<%= days_to_repeat %> readonly>
+    <span class="help-block">Optional.</span>
+  </div>
+
   <label class="col-sm-2 control-label" for="event_sunday">Sunday</label>
   <div class="col-sm-10 controls">
     <div class="checkbox">
       <label style="display: block;">
-        <input name="event[sunday]" type="hidden" value="0"><input value="1" type="checkbox" checked="checked" name="event[sunday]" id="event_sunday">
+        <input name="event[sunday]" type="hidden" value="0"><input onclick="concatDays()" value="1" type="checkbox" <%= current_days[:sunday].to_s %> name="event[sunday]" id="event_sunday">
       </label>
     </div>
   </div>
 
-  <label class="col-sm-2 control-label" for="event_sunday">monday</label>
+  <label class="col-sm-2 control-label" for="event_monday">monday</label>
   <div class="col-sm-10 controls">
     <div class="checkbox">
       <label style="display: block;">
-        <input name="event[monday]" type="hidden" value="0"><input value="1" type="checkbox" checked="checked" name="event[monday]" id="event_monday">
+        <input name="event[monday]" type="hidden" value="0"><input onclick="concatDays()" value="1" type="checkbox" <%= current_days[:monday].to_s %> name="event[monday]" id="event_monday">
       </label>
     </div>
   </div>
 
-  <label class="col-sm-2 control-label" for="event_sunday">tuesday</label>
+  <label class="col-sm-2 control-label" for="event_tuesday">tuesday</label>
   <div class="col-sm-10 controls">
     <div class="checkbox">
       <label style="display: block;">
-        <input name="event[tuesday]" type="hidden" value="0"><input value="1" type="checkbox" checked="checked" name="event[tuesday]" id="event_tuesday">
+        <input name="event[tuesday]" type="hidden" value="0"><input onclick="concatDays()" value="1" type="checkbox" <%= current_days[:tuesday].to_s %> name="event[tuesday]" id="event_tuesday">
       </label>
     </div>
   </div>
 
-  <label class="col-sm-2 control-label" for="event_sunday">wednesday</label>
+  <label class="col-sm-2 control-label" for="event_wednesday">wednesday</label>
   <div class="col-sm-10 controls">
     <div class="checkbox">
       <label style="display: block;">
-        <input name="event[wednesday]" type="hidden" value="0"><input value="1" type="checkbox" checked="checked" name="event[wednesday]" id="event_wednesday">
+        <input name="event[wednesday]" type="hidden" value="0"><input onclick="concatDays()" value="1" type="checkbox" <%= current_days[:wednesday].to_s %> name="event[wednesday]" id="event_wednesday">
       </label>
       </div>
   </div>
 
-  <label class="col-sm-2 control-label" for="event_sunday">thursday</label>
+  <label class="col-sm-2 control-label" for="event_thursday">thursday</label>
   <div class="col-sm-10 controls">
     <div class="checkbox">
       <label style="display: block;">
-        <input name="event[thursday]" type="hidden" value="0"><input value="1" type="checkbox" checked="checked" name="event[thursday]" id="event_thursday">
+        <input name="event[thursday]" type="hidden" value="0"><input onclick="concatDays()" value="1" type="checkbox" <%= current_days[:thursday].to_s %> name="event[thursday]" id="event_thursday">
       </label>
     </div>
   </div>
 
-  <label class="col-sm-2 control-label" for="event_sunday">friday</label>
+  <label class="col-sm-2 control-label" for="event_friday">friday</label>
   <div class="col-sm-10 controls">
     <div class="checkbox">
       <label style="display: block;">
-        <input name="event[friday]" type="hidden" value="0"><input value="1" type="checkbox" checked="checked" name="event[friday]" id="event_friday">
+        <input name="event[friday]" type="hidden" value="0"><input onclick="concatDays()" value="1" type="checkbox" <%= current_days[:friday].to_s %> name="event[friday]" id="event_friday">
       </label>
     </div>
   </div>
 
-  <label class="col-sm-2 control-label" for="event_sunday">saturday</label>
+  <label class="col-sm-2 control-label" for="event_saturday">saturday</label>
   <div class="col-sm-10 controls">
     <div class="checkbox">
       <label style="display: block;">
-        <input name="event[saturday]" type="hidden" value="0"><input value="1" type="checkbox" checked="checked" name="event[saturday]" id="event_saturday">
+        <input name="event[saturday]" type="hidden" value="0"><input onclick="concatDays()" value="1" type="checkbox" <%= current_days[:saturday].to_s %> name="event[saturday]" id="event_saturday">
       </label>
     </div>
   </div>
@@ -65,6 +72,15 @@
 
 <script>
   function concatDays() {
-    
+    var days = "";
+    days += (document.getElementById("event_sunday").checked ? "1," : "0,");
+    days += (document.getElementById("event_monday").checked ? "1," : "0,");
+    days += (document.getElementById("event_tuesday").checked ? "1," : "0,");
+    days += (document.getElementById("event_wednesday").checked ? "1," : "0,");
+    days += (document.getElementById("event_thursday").checked ? "1," : "0,");
+    days += (document.getElementById("event_friday").checked ? "1," : "0,");
+    days += (document.getElementById("event_saturday").checked ? "1" : "0");
+
+    document.getElementById("event_days_to_repeat").value = days;
   }
 </script>

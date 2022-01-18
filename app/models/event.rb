@@ -5,22 +5,6 @@ class Event < ApplicationRecord
   after_update :restart_scheduler
   after_destroy :restart_scheduler
 
-  before_save :concat_days
-
-  def concat_days
-    days = ""
-    self.sunday
-    days += params[:sunday]
-    days += params[:monday]
-    days += params[:tuesday]
-    days += params[:wednesday]
-    days += params[:thursday]
-    days += params[:friday]
-    days += params[:saturday]
-
-    self.days_to_repeat = days
-  end
-
   def restart_scheduler
     system("screen -X -S scheduler quit")
     sleep(0.5)
