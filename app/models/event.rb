@@ -5,6 +5,8 @@ class Event < ApplicationRecord
   after_update :restart_scheduler
   after_destroy :restart_scheduler
 
+
+  # Doing this is sloppy. If someone updates and event at the time of another event, the server will be offline and therefore that event will be missed.
   def restart_scheduler
     system("screen -X -S scheduler quit")
     sleep(0.5)
