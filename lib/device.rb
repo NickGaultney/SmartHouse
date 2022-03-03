@@ -9,6 +9,7 @@ class Device
 		
 		append_template
 		append_switch_mode
+		append_rules
 		close_payload
 	end
 
@@ -18,8 +19,7 @@ class Device
 
 	private
 		def append_template
-			template = "{\"NAME\":\"#{@device.device_type}\",\"GPIO\":#{@device.tasmota_config.gpio},\"FLAG\":0,\"BASE\":18}".gsub(" ", "%20").gsub("\"", "%22")
-			@payload += "template%20#{template}%3B"
+			@payload += "template%20#{@device.gpio_template}%3B"
 		end
 
 		def append_switch_mode
@@ -28,7 +28,14 @@ class Device
 			end
 		end
 
+		def append_rules
+			unless @device.tasmota_rules.nil?
+				@payload += @device.tasmota_rules
+			end
+		end
+
 		def close_payload
 			@payload += "module%200%3B"
+			Rails.logger.info @payload
 		end
 end

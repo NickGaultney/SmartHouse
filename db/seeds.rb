@@ -8,3 +8,4 @@
 
 TasmotaConfig.create(name: "Sonoff Mini", gpio: "[32,0,0,0,160,0,0,0,224,288,0,0,0,0]")
 TasmotaConfig.create(name: "Sonoff Mini Remote", gpio: "[32,0,0,0,160,0,0,0,0,224,0,0,0,0]")
+TasmotaConfig.create(name: "ESP32-Inputs", gpio: "[1,1,1,1,1,1,1,1,161,160,162,1,1,1,1,1,0,1,1,1,0,1,1,1,0,0,0,0,1,1,1,1,1,0,0,1]")
