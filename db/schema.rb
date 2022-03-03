@@ -10,16 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_28_004007) do
+ActiveRecord::Schema.define(version: 2022_01_17_213836) do
 
   create_table "buttons", force: :cascade do |t|
     t.string "coordinates"
-    t.string "icon"
     t.string "buttonable_type"
     t.integer "buttonable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "icon_id"
     t.index ["buttonable_type", "buttonable_id"], name: "index_buttons_on_buttonable_type_and_buttonable_id"
+    t.index ["icon_id"], name: "index_buttons_on_icon_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.boolean "enabled"
+    t.string "days_to_repeat"
+    t.date "start_date"
+    t.date "end_date"
+    t.time "time"
+    t.integer "frequency"
+    t.string "repeat_type"
+    t.string "action"
+    t.integer "input_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.time "end_time"
+    t.index ["input_id"], name: "index_events_on_input_id"
   end
 
   create_table "groups", force: :cascade do |t|
@@ -40,6 +57,12 @@ ActiveRecord::Schema.define(version: 2021_11_28_004007) do
     t.integer "output_id"
     t.index ["group_id"], name: "index_groups_outputs_on_group_id"
     t.index ["output_id"], name: "index_groups_outputs_on_output_id"
+  end
+
+  create_table "icons", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "inputs", force: :cascade do |t|

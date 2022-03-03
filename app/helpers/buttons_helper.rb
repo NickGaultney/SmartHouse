@@ -18,4 +18,11 @@ module ButtonsHelper
 			return ""
 		end
 	end
+
+	def svg(button)
+	  "icons/#{button.icon.name}"
+	  #File.open(Rails.root.join('public', 'icons', file_name+".svg"), "rb") do |file|
+	  #  file.read.html_safe
+	  #end
+	end
 end
