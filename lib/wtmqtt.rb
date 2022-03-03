@@ -114,7 +114,8 @@ class WTMQTT
 		end
 
 		def get_input_index(payload)
-			payload.split(":")[0][5...-1].to_i
+			# grab the index from the payload. i.e. '3' in 'switch3:0'
+			(payload.split(":")[0][/\d+/].to_i) - 1
 		end
 
 		def get_input_state(payload)
@@ -159,7 +160,7 @@ class WTMQTT
 		end
 
 		def switch_action(packet)
-			device = SonoffMiniR2.find(get_device_id(packet))
+			device = IoDevice.find(get_device_id(packet))
 			switch = device.inputs[get_input_index(packet.payload)]
 			state = get_input_state(packet.payload)
 

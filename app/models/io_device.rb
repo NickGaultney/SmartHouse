@@ -28,4 +28,12 @@ class IoDevice < ApplicationRecord
   def generate_io
 
   end
+
+  def gpio_template
+
+  end
+
+  def tasmota_rules
+
+  end
 end

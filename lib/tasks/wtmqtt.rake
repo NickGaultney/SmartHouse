@@ -6,6 +6,7 @@ namespace :wtmqtt do
 				client.connect
 				client.subscribe("stat/+/POWER")
 				client.subscribe("stat/+/switch")
+				client.subscribe("tele/+/SENSOR")
 
 				File.open("tmp/pids/mqtt.pid", "w") do |file|
 					file.write(Process.pid.to_s)
