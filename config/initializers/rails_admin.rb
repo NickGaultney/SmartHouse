@@ -51,7 +51,15 @@ RailsAdmin.config do |config|
       field :enabled
       field :days_to_repeat do
         def render
-          bindings[:view].render partial: 'days_of_week', :locals => {:field => self, :form => bindings[:form] }
+          if bindings[:object].days_to_repeat.present?
+            current_days = parse_days(bindings[:object].days_to_repeat)
+            days_to_repeat = bindings[:object].days_to_repeat
+          else
+            days_to_repeat = ""
+            current_days = {sunday: "", monday: "", tuesday: "", wednesday: "", thursday: "", friday: "", saturday: ""}
+          end
+
+          bindings[:view].render partial: 'days_of_week', :locals => {:field => self, :form => bindings[:form], days_to_repeat: days_to_repeat, current_days: current_days }
         end
       end
       field :start_date
@@ -62,7 +70,8 @@ RailsAdmin.config do |config|
           bindings[:view].render partial: 'subtypes', :locals => {:field => self, :form => bindings[:form], field_name: "action", model_name: "event", current_type: bindings[:object].action, subtypes: ["on", "off", "toggle"]}
         end
       end
-      field :input
+      field :groups
+      field :outputs
     end
   end
 
@@ -200,65 +209,6 @@ RailsAdmin.config do |config|
       false
     end
   end
-=begin
-  config.model Switch do
-    edit do
-      field :name
-      field :ip_address do
-        def render
-          if bindings[:object].ip_address.present?
-            devices = {bindings[:object].topic => bindings[:object].ip_address}
-          else
-            devices = get_network_devices
-          end
-
-          bindings[:view].render partial: 'switch_ip_address', :locals => {:field => self, :form => bindings[:form], network_devices: devices}
-        end
-      end
-    end
-  end
-
-  config.model SlaveSwitch do
-    edit do
-      field :name
-      field :ip_address do
-        def render
-          if bindings[:object].ip_address.present?
-            devices = {bindings[:object].topic => bindings[:object].ip_address}
-          else
-            devices = get_network_devices
-          end
-
-          bindings[:view].render partial: 'slave_switch_ip_address', :locals => {:field => self, :form => bindings[:form], network_devices: devices}
-        end
-      end
-      field :switch
-      field :switch_mode do
-        def render
-          bindings[:view].render partial: 'switch_mode', :locals => {:field => self, :form => bindings[:form], current_mode: bindings[:object].switch_mode}
-        end
-      end
-      field :enable_relay
-    end
-  end
-  
-  config.model Input do
-    edit do
-      field :name
-      field :ip_address do
-        def render
-          if bindings[:object].ip_address.present?
-            devices = {bindings[:object].topic => bindings[:object].ip_address}
-          else
-            devices = get_network_devices
-          end
-        
-        bindings[:view].render partial: 'input_device_ip_address', :locals => {:field => self, :form => bindings[:form], network_devices: devices}
-        end
-      end
-    end
-  end
-=end
 
   config.model NetworkDevice do
     visible do
@@ -273,5 +223,21 @@ RailsAdmin.config do |config|
     end
 
     return network_devices
+  end
+
+  def parse_days(days_to_repeat)
+    days = {}
+    
+    days_temp = days_to_repeat.split(",")
+
+    days[:sunday] = days_temp[0] == "1" ? "checked=checked" : ""
+    days[:monday] = days_temp[1] == "1" ? "checked=checked" : ""
+    days[:tuesday] = days_temp[2] == "1" ? "checked=checked" : ""
+    days[:wednesday] = days_temp[3] == "1" ? "checked=checked" : ""
+    days[:thursday] = days_temp[4] == "1" ? "checked=checked" : ""
+    days[:friday] = days_temp[5] == "1" ? "checked=checked" : ""
+    days[:saturday] = days_temp[6] == "1" ? "checked=checked" : ""
+
+    return days
   end
 end

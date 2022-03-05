@@ -1,12 +1,16 @@
 class Event < ApplicationRecord
-  belongs_to :input
+  has_and_belongs_to_many :outputs
+  has_and_belongs_to_many :groups
+
+  validates :days_to_repeat, :presence => true
+  validates :start_date, :presence => true
+  validates :time, :presence => true
+  validates :action, :presence => true
 
   after_create :restart_scheduler
   after_update :restart_scheduler
   after_destroy :restart_scheduler
 
-
-  # Doing this is sloppy. If someone updates and event at the time of another event, the server will be offline and therefore that event will be missed.
   def restart_scheduler
     system("screen -X -S scheduler quit")
     sleep(0.5)
@@ -54,6 +58,22 @@ class Event < ApplicationRecord
       return time - now
     else
       return time - beginning_of_today 
+    end
+  end
+
+  def all_outputs
+    all_outputs = self.outputs
+
+    self.groups.each do |group|
+      all_outputs += group.outputs
+    end
+
+    return all_outputs
+  end
+
+  def foreach_output
+    self.all_outputs.each do |output|
+      yield(output)
     end
   end
 end

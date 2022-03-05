@@ -41,14 +41,8 @@ def start(event)
 	loop do
 		sleep_until_next_event(event)
 		puts "Time to do stuff"
-		case event.action
-		when "on"
-			event.input.send("on")
-		when "off"
-			event.input.send("off")
-		when "toggle"
-			event.input.send("toggle")
-		end
+		# TODO Is this "send" ever anything other than on, off or toggle?
+		event.foreach_output {|output| output.send(event.action)}
 	end
 end
 

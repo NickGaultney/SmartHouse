@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_17_213836) do
+ActiveRecord::Schema.define(version: 2022_03_05_043017) do
 
   create_table "buttons", force: :cascade do |t|
     t.string "coordinates"
@@ -32,11 +32,23 @@ ActiveRecord::Schema.define(version: 2022_01_17_213836) do
     t.integer "frequency"
     t.string "repeat_type"
     t.string "action"
-    t.integer "input_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.time "end_time"
-    t.index ["input_id"], name: "index_events_on_input_id"
+  end
+
+  create_table "events_groups", id: false, force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "group_id"
+    t.index ["event_id"], name: "index_events_groups_on_event_id"
+    t.index ["group_id"], name: "index_events_groups_on_group_id"
+  end
+
+  create_table "events_outputs", id: false, force: :cascade do |t|
+    t.integer "event_id"
+    t.integer "output_id"
+    t.index ["event_id"], name: "index_events_outputs_on_event_id"
+    t.index ["output_id"], name: "index_events_outputs_on_output_id"
   end
 
   create_table "groups", force: :cascade do |t|
