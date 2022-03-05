@@ -6,11 +6,8 @@ class VirtualSwitch < Input
 	    	state: self.state,
 	    	id: self.buttons.first.id
 	    )
-		state = convert_switch_mode
-
-		self.all_outputs.each do |output|
-			output.switch_action(state)
-		end
+		
+		super
 	end
 
 

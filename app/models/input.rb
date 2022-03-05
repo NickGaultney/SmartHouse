@@ -12,8 +12,15 @@ class Input < ApplicationRecord
   end
 
   def buttonable_action
-    #Rails.logger.info self.outputs
-    foreach_output {|output| output.switch_action((self.state ? 1 : 0)) }
+    Rails.logger.info "##########################{self.switch_mode}######################"
+    case self.switch_mode
+    when 'toggle'
+      toggle
+    when 'follow'
+      foreach_output {|output| output.switch_action((self.state ? 1 : 0)) }
+    when 'inverted-follow'
+      foreach_output {|output| output.switch_action((self.state ? 0 : 1)) }
+    end
   end
 
   def all_outputs

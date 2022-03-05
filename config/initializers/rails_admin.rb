@@ -51,15 +51,7 @@ RailsAdmin.config do |config|
       field :enabled
       field :days_to_repeat do
         def render
-          if bindings[:object].days_to_repeat.present?
-            current_days = parse_days(bindings[:object].days_to_repeat)
-            days_to_repeat = bindings[:object].days_to_repeat
-          else
-            days_to_repeat = ""
-            current_days = {sunday: "", monday: "", tuesday: "", wednesday: "", thursday: "", friday: "", saturday: ""}
-          end
-
-          bindings[:view].render partial: 'days_of_week', :locals => {:field => self, :form => bindings[:form], days_to_repeat: days_to_repeat, current_days: current_days }
+          bindings[:view].render partial: 'days_of_week', :locals => {:field => self, :form => bindings[:form] }
         end
       end
       field :start_date
@@ -127,7 +119,7 @@ RailsAdmin.config do |config|
       field :name
       field :switch_mode do
         def render
-          modes = ["toggle", "follow"]
+          modes = ["toggle", "follow", "inverted-follow"]
           bindings[:view].render partial: 'subtypes', :locals => {:field => self, :form => bindings[:form], field_name: "switch_mode", model_name: "input", current_type: bindings[:object].switch_mode, subtypes: modes}
         end
       end
@@ -281,21 +273,5 @@ RailsAdmin.config do |config|
     end
 
     return network_devices
-  end
-
-  def parse_days(days_to_repeat)
-    days = {}
-    
-    days_temp = days_to_repeat.split(",")
-
-    days[:sunday] = days_temp[0] == "1" ? "checked=checked" : ""
-    days[:monday] = days_temp[1] == "1" ? "checked=checked" : ""
-    days[:tuesday] = days_temp[2] == "1" ? "checked=checked" : ""
-    days[:wednesday] = days_temp[3] == "1" ? "checked=checked" : ""
-    days[:thursday] = days_temp[4] == "1" ? "checked=checked" : ""
-    days[:friday] = days_temp[5] == "1" ? "checked=checked" : ""
-    days[:saturday] = days_temp[6] == "1" ? "checked=checked" : ""
-
-    return days
   end
 end
