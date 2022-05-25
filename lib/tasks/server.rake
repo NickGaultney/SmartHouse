@@ -1,12 +1,12 @@
 desc 'Stop rails server'
 task :stop do
   begin
-    File.new("tmp/pids/server.pid").tap { |f| `kill -9 #{f.read.to_i}` }
+    system("screen -X -S rails quit")
   rescue
   end
 
   begin
-    File.new("tmp/pids/mqtt.pid").tap { |f| `kill -9 #{f.read.to_i}` }
+    system("screen -X -S mqtt quit")
   rescue
   end
 
