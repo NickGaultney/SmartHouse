@@ -40,6 +40,7 @@ RailsAdmin.config do |config|
     settings
     upload_floor_plan
     icon_upload
+    network_monitor
 
     ## With an audit adapter, you can add:
     # history_index
@@ -70,8 +71,7 @@ RailsAdmin.config do |config|
           bindings[:view].render partial: 'subtypes', :locals => {:field => self, :form => bindings[:form], field_name: "action", model_name: "event", current_type: bindings[:object].action, subtypes: ["on", "off", "toggle"]}
         end
       end
-      field :groups
-      field :outputs
+      field :input
     end
   end
 
@@ -128,7 +128,7 @@ RailsAdmin.config do |config|
       field :name
       field :switch_mode do
         def render
-          modes = ["toggle", "follow", "inverted-follow"]
+          modes = ["toggle", "follow"]
           bindings[:view].render partial: 'subtypes', :locals => {:field => self, :form => bindings[:form], field_name: "switch_mode", model_name: "input", current_type: bindings[:object].switch_mode, subtypes: modes}
         end
       end
@@ -209,6 +209,65 @@ RailsAdmin.config do |config|
       false
     end
   end
+=begin
+  config.model Switch do
+    edit do
+      field :name
+      field :ip_address do
+        def render
+          if bindings[:object].ip_address.present?
+            devices = {bindings[:object].topic => bindings[:object].ip_address}
+          else
+            devices = get_network_devices
+          end
+
+          bindings[:view].render partial: 'switch_ip_address', :locals => {:field => self, :form => bindings[:form], network_devices: devices}
+        end
+      end
+    end
+  end
+
+  config.model SlaveSwitch do
+    edit do
+      field :name
+      field :ip_address do
+        def render
+          if bindings[:object].ip_address.present?
+            devices = {bindings[:object].topic => bindings[:object].ip_address}
+          else
+            devices = get_network_devices
+          end
+
+          bindings[:view].render partial: 'slave_switch_ip_address', :locals => {:field => self, :form => bindings[:form], network_devices: devices}
+        end
+      end
+      field :switch
+      field :switch_mode do
+        def render
+          bindings[:view].render partial: 'switch_mode', :locals => {:field => self, :form => bindings[:form], current_mode: bindings[:object].switch_mode}
+        end
+      end
+      field :enable_relay
+    end
+  end
+  
+  config.model Input do
+    edit do
+      field :name
+      field :ip_address do
+        def render
+          if bindings[:object].ip_address.present?
+            devices = {bindings[:object].topic => bindings[:object].ip_address}
+          else
+            devices = get_network_devices
+          end
+        
+        bindings[:view].render partial: 'input_device_ip_address', :locals => {:field => self, :form => bindings[:form], network_devices: devices}
+        end
+      end
+    end
+  end
+=end
 
   config.model NetworkDevice do
     visible do

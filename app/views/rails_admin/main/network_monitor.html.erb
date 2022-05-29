@@ -1,0 +1,16 @@
+<h1>Devices</h1>
+<style>
+	.grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		place-items: center;
+	}
+</style>
+
+<div class="grid">
+	<% ping_io_devices.each do |device| %>
+		<i><%= device[0] %></i>
+		<i style="color:<%= status_color(device[2]) %>"><%= device[2] %></i>
+		<i><%= device[1] %></i>
+	<% end %>
+</div>

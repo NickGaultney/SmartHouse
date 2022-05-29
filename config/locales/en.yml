@@ -41,6 +41,10 @@ en:
         title: "Settings"
         breadcrumb: "Settings"
         menu: "Settings"
+      network_monitor:
+        title: "Network Monitor"
+        breadcrumb: "Network Monitor"
+        menu: "Network Monitor"
       upload_floor_plan:
       icon_upload:
         

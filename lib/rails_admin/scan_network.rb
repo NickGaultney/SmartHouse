@@ -45,9 +45,43 @@ module RailsAdmin
 		    return network_devices
 		end
 
-	  def get_device_topic(ip)
-	    JSON.parse(HTTP.get("http://#{ip}/cm?cmnd=status+0").body.to_str)["Status"]["Topic"]
-	  end
+		def get_device_topic(ip)
+	    	JSON.parse(HTTP.get("http://#{ip}/cm?cmnd=status+0").body.to_str)["Status"]["Topic"]
+		end
+
+		# FIXME: "devices" is an ugly nested array
+		def ping_io_devices
+			devices = []
+			threads   = []
+	  		IoDevice.all.each do |device|
+	  			threads << Thread.new { devices << [device.name, device.ip_address, ping(device.ip_address)] }
+	  		end
+
+	  		threads.each(&:join)
+	  		return devices
+	    end
+
+		def ping(ip)
+			socket      = Socket.new(:INET, :STREAM)
+			remote_addr = Socket.sockaddr_in(80, ip)
+
+			begin
+				socket.connect_nonblock(remote_addr)
+			rescue Errno::EINPROGRESS
+			end
+
+			_, sockets, _ = IO.select(nil, [socket], nil, 2)
+
+			if sockets
+				return "Online"
+			else
+				return "Offline"
+			end
+		end
+
+		def status_color(status)
+			status == "Online" ? "#00FF00" : "#AA4A44"
+		end
 	end
 
 	module Config
@@ -84,6 +118,19 @@ module RailsAdmin
 		    end
 
 		    class Settings < CustomActionTemplate
+		        RailsAdmin::Config::Actions.register(self)
+
+		        register_instance_option :http_methods do
+		          [:get]
+		        end
+
+		        register_instance_option :controller do
+		          proc do
+		          end
+		        end
+		    end
+
+		    class NetworkMonitor < CustomActionTemplate
 		        RailsAdmin::Config::Actions.register(self)
 
 		        register_instance_option :http_methods do
