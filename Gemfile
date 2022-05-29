@@ -30,7 +30,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'sidekiq'
 
 gem 'paho-mqtt'
-gem 'http_scanner'
+gem 'httparty'
 gem 'http'
 
 gem 'jquery-rails'

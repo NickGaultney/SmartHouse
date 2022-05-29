@@ -35,11 +35,18 @@ class WTMQTT
 		on_message
 	end
 
-	###################################################
-	#
-	# => INSTANCE METHODS
-	#
-	###################################################
+	def on_message
+		@client.on_message do |packet|
+		  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
+
+		  if io_type(packet).downcase == "power"
+		  	self.send(get_device_type(packet).downcase + "_action", packet)
+		  elsif io_type(packet).downcase == "switch"
+		  	switch_action(packet)
+		  end
+		end
+	end
+
 	def connect
 		begin 
 			@client.connect(@ip, @port, @client.keep_alive, true, @client.blocking)
@@ -59,12 +66,38 @@ class WTMQTT
     	@client.subscribe([topic, 1])
 	end
 
+=begin
+	def toggle_light(topic)
+		@client.publish("cmnd/#{topic}/Power", "toggle", false, 1)
+	end
+
+	def change_light(topic, payload)
+		@client.publish("cmnd/#{topic}/Power", payload, false, 1)
+	end
+	def switch_action(id, payload)
+		device = Switch.find(id)
+		device.update(state: get_state(payload))
+
+		HTTP.get("http://localhost:3000/bump?id=#{device.id}")
+	end
+
+	def slaveswitch_action(id, payload)
+		puts SlaveSwitch.find(id).switch_id
+		device = Switch.find(SlaveSwitch.find(id).switch_id)
+	    change_light(device.topic, payload)
+
+	    HTTP.get("http://localhost:3000/bump?id=#{device.id}")
+	end
+	def update_config(topic, command)
+		self.connect
+
+		@client.publish("cmnd/#{topic}/backlog", command, false, 1)
+
+		self.disconnect
+	end
+=end
+
 	private
-		###################################################
-		#
-		# => INITIALIZE METHODS
-		#
-		###################################################
 		def confirm_subscription
 			### Register a callback on suback to assert the subcription
 			@client.on_suback do
@@ -80,57 +113,8 @@ class WTMQTT
 			end
 		end
 
-		def on_message
-			@client.on_message do |packet|
-			  puts "New message received on topic: #{packet.topic}\n>>>#{packet.payload}"
-
-			  if io_type(packet).downcase == "power"
-			  	self.send(get_device_type(packet).downcase + "_action", packet)
-			  elsif io_type(packet).downcase == "switch"
-			  	switch_action(packet)
-			  end
-			end
-		end
-
-		###################################################
-		#
-		# => SUBSCRIPTION ACTION METHODS
-		#
-		###################################################
-		def switch_action(packet)
-			device = IoDevice.find(get_device_id(packet))
-			switch = device.inputs[get_input_index(packet.payload)]
-			state = get_input_state(packet.payload)
-
-			update_switch_state(switch, state)
-			switch.buttonable_action
-		end
-
-
-		def sonoffminir2_action(packet)
-			type = io_type(packet).downcase
-			device = SonoffMiniR2.find(get_device_id(packet))
-
-			relay = device.outputs.first
-			relay.update(state: relay_state(packet))
-
-			unless relay.buttons.empty?
-				ActionCable.server.broadcast(
-			      'buttons',
-			      state: relay_state(packet),
-			      id: relay.buttons.first.id
-			    )
-			end
-		end
-
-		###################################################
-		#
-		# => HELPER METHODS
-		#
-		###################################################
 		def get_input_index(payload)
-			# grab the index from the payload. i.e. '3' in 'switch3:0'
-			(payload.split(":")[0][/\d+/].to_i) - 1
+			payload.split(":")[0][5...-1].to_i
 		end
 
 		def get_input_state(payload)
@@ -170,6 +154,36 @@ class WTMQTT
 			      'buttons',
 			      state: converted_state,
 			      id: switch.buttons.first.id
+			    )
+			end
+		end
+
+		def switch_action(packet)
+			return unless SonoffMiniR2.exists?(get_device_id(packet))
+
+			device = SonoffMiniR2.find(get_device_id(packet))
+			switch = device.inputs[get_input_index(packet.payload)]
+			state = get_input_state(packet.payload)
+
+			update_switch_state(switch, state)
+			
+			switch.all_outputs.each do |output|
+				output.switch_action(state)
+			end
+		end
+
+		def sonoffminir2_action(packet)
+			type = io_type(packet).downcase
+			device = SonoffMiniR2.find(get_device_id(packet))
+
+			relay = device.outputs.first
+			relay.update(state: relay_state(packet))
+
+			unless relay.buttons.empty?
+				ActionCable.server.broadcast(
+			      'buttons',
+			      state: relay_state(packet),
+			      id: relay.buttons.first.id
 			    )
 			end
 		end

@@ -101,7 +101,9 @@ GEM
     http-cookie (1.0.4)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    http_scanner (0.2.1)
+    httparty (0.20.0)
+      mime-types (~> 3.0)
+      multi_xml (>= 0.5.2)
     i18n (1.8.11)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
@@ -142,10 +144,14 @@ GEM
     marcel (1.0.2)
     matrix (0.4.2)
     method_source (1.0.0)
+    mime-types (3.4.1)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2022.0105)
     mini_mime (1.1.2)
     mini_portile2 (2.7.1)
     minitest (5.15.0)
     msgpack (1.4.2)
+    multi_xml (0.6.0)
     nested_form (0.3.2)
     nio4r (2.5.8)
     nokogiri (1.13.1)
@@ -271,7 +277,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   http
-  http_scanner
+  httparty
   jQuery-rwdImageMaps-rails
   jbuilder (~> 2.5)
   jquery-rails
