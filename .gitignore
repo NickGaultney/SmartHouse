@@ -32,3 +32,6 @@
 /sftp-config.json
 /nohup.out
 nohup.out
+
+# Ignore Personal Settings File
+/public/settings/*
