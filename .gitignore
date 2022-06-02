@@ -35,4 +35,4 @@
 nohup.out
 
 # Ignore Personal Settings File
-/public/settings/*
+/public/settings/*public/settings/floor_plan.png
