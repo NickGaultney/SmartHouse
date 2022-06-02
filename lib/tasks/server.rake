@@ -35,6 +35,11 @@ task :restart do
   Rake::Task[:start].invoke
 end
 
+desc "Launch mosquitto client"
+task :debug_mqtt do
+  system("screen -dmS debug mosquitto_sub -h localhost -p 1883 -u homeiot -P 12345678 -t '#' -v")
+end
+
 desc "Flash Sonoff Device with Tasmota Firmware"
 task :flash, [:ip] do
   HTTP.post("http://#{args[:ip]}:8081/zeroconf/info", json: {deviceid: "", data: {}})

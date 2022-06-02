@@ -58,7 +58,8 @@ module RailsAdmin
 	  		end
 
 	  		threads.each(&:join)
-	  		return devices
+	  		# FIXME: Inefficient sorting method
+	  		return devices.sort { |a,b| a[1].split(".")[-1].to_i <=> b[1].split(".")[-1].to_i }
 	    end
 
 		def ping(ip)
@@ -112,7 +113,7 @@ module RailsAdmin
             			NetworkDevice.create(topic: topic, ip_address: ip)
 		            end
 		            
-		            redirect_to dashboard_path
+		            redirect_to "/admin/io_device/new"
 		          end
 		        end
 		    end

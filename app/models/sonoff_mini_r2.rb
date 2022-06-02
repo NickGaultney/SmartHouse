@@ -12,6 +12,7 @@ class SonoffMiniR2 < IoDevice
 	end
 
 	def tasmota_rules
+		#rule1 ON switch1#state DO Backlog Power1 %value%; Publish stat/%topic%/switch switch1:%value% ENDON;rule1 1;"
 		"rule1%20ON%20switch1%23state%20DO%20Backlog%20Power1%20%25value%25%3B%20Publish%20stat%2F%25topic%25%2Fswitch%20switch1%3A%25value%25%20ENDON%3Brule1%201%3B"
 	end
 end
