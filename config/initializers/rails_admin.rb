@@ -79,6 +79,7 @@ RailsAdmin.config do |config|
     edit do
       field :name
       field :gpio
+      field :rules
       field :switch_state
     end
   end
