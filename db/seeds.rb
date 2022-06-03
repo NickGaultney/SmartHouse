@@ -6,8 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-TasmotaConfig.create(name: "Sonoff Mini", gpio: "[32,0,0,0,160,0,0,0,224,288,0,0,0,0]")
-TasmotaConfig.create(name: "Sonoff Mini Remote", gpio: "[32,0,0,0,160,0,0,0,0,224,0,0,0,0]")
+normal_rules = "Rule1 ON switch1#state DO Power1 %value% ENDON ON switch1#state DO Publish stat/%topic%/switch switch1:%value% ENDON"
+remote_rules = "Rule1 ON switch1#state DO Publish stat/%topic%/switch switch1:%value% ENDON"
+
+TasmotaConfig.create(name: "Sonoff Mini", gpio: "[32,0,0,0,160,0,0,0,224,288,0,0,0,0]", rules: normal_rules)
+TasmotaConfig.create(name: "Sonoff Mini Remote", gpio: "[32,0,0,0,160,0,0,0,224,288,0,0,0,0]", rules: remote_rules)
 
 Icon.create(name: "Bulb")
 Icon.create(name: "Remote")

@@ -15,14 +15,19 @@ class Relay < Output
 	end
 
 	def toggle
-		HardWorker.perform_async(self.io_device.topic, 'toggle')
+		HardWorker.perform_async(full_topic(self.io_device.topic), 'toggle')
 	end
 
 	def on
-		HardWorker.perform_async(self.io_device.topic, '1')
+		HardWorker.perform_async(full_topic(self.io_device.topic), '1')
 	end
 
 	def off
-		HardWorker.perform_async(self.io_device.topic, '0')
+		HardWorker.perform_async(full_topic(self.io_device.topic), '0')
 	end
+
+	private
+		def full_topic(device_topic)
+			"cmnd/#{device_topic}/Power"
+		end
 end

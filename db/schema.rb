@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_05_043017) do
+ActiveRecord::Schema.define(version: 2022_06_03_024713) do
 
   create_table "buttons", force: :cascade do |t|
     t.string "coordinates"
@@ -131,6 +131,7 @@ ActiveRecord::Schema.define(version: 2022_03_05_043017) do
     t.string "switch_state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "rules"
   end
 
 end

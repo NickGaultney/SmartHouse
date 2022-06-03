@@ -2,3 +2,30 @@
 
 2022-05-30 17:49:56 -0500 >>> Unclear error....: 
 
+2022-06-02 16:43:37 -0600 >>> Unclear error....: 
+
+2022-06-02 17:16:37 -0600 >>> Unclear error....: 
+
+2022-06-02 18:51:59 -0600 >>> Unclear error....: 
+
+2022-06-02 19:07:51 -0600 >>> ActiveRecord::RecordNotFound: [1mTraceback[m (most recent call last):
+	15: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:134:in `block in daemon_mode'
+	14: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:184:in `mqtt_loop'
+	13: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `loop_read'
+	12: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:168:in `times'
+	11: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/client.rb:169:in `block in loop_read'
+	10: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:47:in `receive_packet'
+	 9: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:58:in `handle_packet'
+	 8: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/paho-mqtt-1.0.12/lib/paho_mqtt/handler.rb:147:in `handle_publish'
+	 7: from /home/ubuntu/SmartHouse/lib/wtmqtt.rb:43:in `block in on_message'
+	 6: from /home/ubuntu/SmartHouse/lib/wtmqtt.rb:177:in `sonoffminir2_action'
+	 5: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/core.rb:160:in `find'
+	 4: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/querying.rb:5:in `find'
+	 3: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/relation/finder_methods.rb:69:in `find'
+	 2: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/relation/finder_methods.rb:435:in `find_with_ids'
+	 1: from /home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/relation/finder_methods.rb:456:in `find_one'
+/home/ubuntu/.rbenv/versions/2.7.5/lib/ruby/gems/2.7.0/gems/activerecord-5.2.6/lib/active_record/relation/finder_methods.rb:346:in `raise_record_not_found_exception!': [1mCouldn't find SonoffMiniR2 with 'id'=4 [WHERE "io_devices"."device_type" IN ('SonoffMiniR2')] ([1;4mActiveRecord::RecordNotFound[m[1m)[m
+
+
+2022-06-02 20:57:27 -0600 >>> Unclear error....: 
+

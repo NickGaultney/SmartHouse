@@ -37,7 +37,7 @@ end
 
 desc "Launch mosquitto client"
 task :debug_mqtt do
-  system("screen -dmS debug mosquitto_sub -h localhost -p 1883 -u homeiot -P 12345678 -t '#' -v")
+  system("screen -S debug mosquitto_sub -h localhost -p 1883 -u homeiot -P 12345678 -t '#' -v")
 end
 
 desc "Flash Sonoff Device with Tasmota Firmware"
