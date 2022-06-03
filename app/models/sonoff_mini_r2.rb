@@ -4,7 +4,9 @@ class SonoffMiniR2 < IoDevice
 		#Output.create(name: "#{self.name}_SMR2_#{self.id}_out", output_type: "Relay", io_device: self)
 
 		Input.create(name: "#{self.name}", input_type: "Switch", io_device: self)
-		Output.create(name: "#{self.name}", output_type: "Relay", io_device: self)
+		relay = Output.create(name: "#{self.name}", output_type: "Relay", io_device: self)
+
+		Button.create(icon: Icon.find_by(name: "Bulb"), buttonable: relay)
 	end
 
 	def gpio_template
