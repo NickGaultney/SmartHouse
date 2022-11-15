@@ -15,7 +15,7 @@ namespace :wtmqtt do
 			    error_message = e.full_message
 		    ensure
 	 			error_type = "Unclear error...." if error_type.nil?
-	 			open('/home/ubuntu/SmartHouse/lib/tasks/logs', 'a') do |f|
+	 			open('/home/ubuntu/SmartHouse/lib/tasks/logs') do |f|
 				  f.puts Time.now.to_s + " >>> #{error_type}: #{error_message}\n\n"
 				end
 			end

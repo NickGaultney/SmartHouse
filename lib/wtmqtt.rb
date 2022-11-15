@@ -165,26 +165,32 @@ class WTMQTT
 			switch = device.inputs[get_input_index(packet.payload)]
 			state = get_input_state(packet.payload)
 
-			update_switch_state(switch, state)
-			
-			switch.all_outputs.each do |output|
-				output.switch_action(state)
+			unless switch.nil?
+				update_switch_state(switch, state)
+				
+				switch.all_outputs.each do |output|
+					output.switch_action(state)
+				end
 			end
 		end
 
 		def sonoffminir2_action(packet)
+			return unless SonoffMiniR2.exists?(get_device_id(packet))
+
 			type = io_type(packet).downcase
 			device = SonoffMiniR2.find(get_device_id(packet))
 
 			relay = device.outputs.first
-			relay.update(state: relay_state(packet))
+			unless relay.nil?
+				relay.update(state: relay_state(packet))
 
-			unless relay.buttons.empty?
-				ActionCable.server.broadcast(
-			      'buttons',
-			      state: relay_state(packet),
-			      id: relay.buttons.first.id
-			    )
+				unless relay.buttons.empty?
+					ActionCable.server.broadcast(
+				      'buttons',
+				      state: relay_state(packet),
+				      id: relay.buttons.first.id
+				    )
+				end
 			end
 		end
 end
