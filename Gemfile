@@ -30,6 +30,8 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'sidekiq'
 
+gem 'mqtt'
+gem 'mqtt-sub_handler'
 gem 'paho-mqtt'
 gem 'httparty'
 gem 'http'

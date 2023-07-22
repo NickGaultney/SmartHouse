@@ -42,11 +42,6 @@ END_OF_MESSAGE
 		error_message = nil
 		begin
 			client = WTMQTT.new
-			client.connect
-			client.subscribe("stat/+/POWER")
-			client.subscribe("stat/+/switch")
-
-			sleep
 		rescue Exception => e
 		    error_type = e.class
 		    error_message = e.full_message
