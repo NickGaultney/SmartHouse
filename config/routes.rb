@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   mount ActionCable.server, at: '/cable'
   root 'welcome#home'
 
+  get '/reboot', to: 'welcome#reboot'
   get '/bump', to: 'buttons#bump'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

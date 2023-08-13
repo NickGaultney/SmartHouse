@@ -10,6 +10,9 @@
         <%= link_to 'Admin', rails_admin_path, class: "nav-link" %>
       </li>
     </ul>
-    <button id="edit-mode" type="button" class="btn btn-success" state="false" onclick="toggleEditMode()"">Enable Edit Mode</button>
+    <%= link_to reboot_path do %> 
+    <button style="margin-right: 20px;" type="button" class="btn btn-success">Restart Server</button>
+    <% end %>
+    <button id="edit-mode" type="button" class="btn btn-success" state="false" onclick="toggleEditMode()">Enable Edit Mode</button>
   </div>
 </nav>
