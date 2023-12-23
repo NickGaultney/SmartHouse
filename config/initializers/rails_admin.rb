@@ -129,7 +129,7 @@ RailsAdmin.config do |config|
       field :name
       field :switch_mode do
         def render
-          modes = ["toggle", "follow"]
+          modes = ["toggle", "follow", "inverted-follow"]
           bindings[:view].render partial: 'subtypes', :locals => {:field => self, :form => bindings[:form], field_name: "switch_mode", model_name: "input", current_type: bindings[:object].switch_mode, subtypes: modes}
         end
       end

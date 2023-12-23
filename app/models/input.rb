@@ -7,8 +7,24 @@ class Input < ApplicationRecord
   has_and_belongs_to_many :groups
 
   before_save :update_state
+  before_save :update_switch_mode, if: :will_save_change_to_switch_mode?
+
   def update_state
     self.state = false if state.nil?
+  end
+
+  def update_switch_mode
+    mode = 0
+    case self.switch_mode
+      when 'toggle'
+        mode = 0
+      when 'follow'
+        mode = 1
+      when 'inverted-follow'
+        mode = 2
+    end
+    
+    self.io_device.update_switch_mode(mode)
   end
 
   def buttonable_action

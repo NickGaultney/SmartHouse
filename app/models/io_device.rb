@@ -26,6 +26,14 @@ class IoDevice < ApplicationRecord
     Device.new(device: self.device_type.constantize.find(self.id)).initialize_device
   end
 
+  def update_switch_mode(mode)
+    return unless [0,1,2].include?(mode)
+
+    #TODO: SWITCH FROM API TO MQTT FOR SECURITY
+    http_payload = "http://#{self.ip_address}/cm?cmnd=SwitchMode1%20#{mode}"
+    HTTP.get(http_payload)
+  end
+
   def generate_io
 
   end
