@@ -40,7 +40,7 @@ class Device
 
 		def append_switch_mode
 			if @device.respond_to?(:switch_mode)
-				@payload += httpify("SwitchMode #{@device.switch_mode};") 
+				@http_payload += httpify("SwitchMode #{@device.switch_mode};") 
 				#@payload << ["SwitchMode", @device.switch_mode] 
 			end
 		end
